@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://nick-weixx.github.io/github.io">
+  <title>博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="博客">
+<meta property="og:url" content="https://nick-weixx.github.io/github.io/index.html">
+<meta property="og:site_name" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="博客">
+  
+    <link rel="alternative" href="./atom.xml" title="博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.f6a68c.css">
+  <style type="text/css">
+  
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+<div class="overlay" style="background: #4d4d4d"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/img/timg.jpeg" class="js-avatar">
+		</a>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">nick</a></h1>
+		</hgroup>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/frame/">体系篇</a></li>
+	        
+				<li><a href="/tags/intforce/">内力篇</a></li>
+	        
+				<li><a href="/tags/plan/">设计篇</a></li>
+	        
+				<li><a href="/tags/game/">游戏篇</a></li>
+	        
+				<li><a href="/tags/live/">生活篇</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+		        
+					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="/img/timg.jpeg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">nick</h1>
+			</hgroup>
+			
+			
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+			        
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 70%">
+				
+				
+					<li style="width: 16.666666666666668%"><a href="/">主页</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/frame/">体系篇</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/intforce/">内力篇</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/plan/">设计篇</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/game/">游戏篇</a></li>
+		        
+					<li style="width: 16.666666666666668%"><a href="/tags/live/">生活篇</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            
+  
+    <article id="post-storm-uv-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/25/storm-uv-1/">storm uv计算实现</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/25/storm-uv-1/" class="archive-article-date">
+  	<time datetime="2017-08-25T12:08:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一，结构简介"><a href="#一，结构简介" class="headerlink" title="一，结构简介"></a>一，结构简介</h2><p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/uv-storm_1.png" alt="Alt text"></p>
+<h3 id="1-numbus-进程"><a href="#1-numbus-进程" class="headerlink" title="1, numbus 进程"></a>1, numbus 进程</h3><p>numbus守护进程，管理，协调，监控集群上运行的topology，包含发布任务，指派任务，失败重发。</p>
+<h3 id="2-supervistor-进程"><a href="#2-supervistor-进程" class="headerlink" title="2, supervistor 进程"></a>2, supervistor 进程</h3><p>supervistor 守护进程，等待numbus分配任务后生产并监控worker(jvm进程)。supervistor和worker运行在不同的jvm上，如果worker奔溃退出，supervistor会尝试重新恢复次进程。</p>
+<h3 id="3-worker-进程"><a href="#3-worker-进程" class="headerlink" title="3, worker 进程"></a>3, worker 进程</h3><p>在supervistor服务器上单独运行的jvm进程，一个topology会被分配给一个或多个worker 进行处理。</p>
+<h3 id="4-executor"><a href="#4-executor" class="headerlink" title="4, executor"></a>4, executor</h3><p>executor 指一个 worker 的jvm 进程中运行的 Java 线程。多个 task 可以指派给同一个 executer 来执行。除非是明确指定， Storm 默认会给每个 executor 分配一个 task。 一个worker上，可以启动多个executor去处理，task任务。</p>
+<h3 id="5-task"><a href="#5-task" class="headerlink" title="5,task"></a>5,task</h3><p>task 是最小单位，spout与blot任务的一个实例</p>
+<h2 id="二，依赖环境"><a href="#二，依赖环境" class="headerlink" title="二，依赖环境"></a>二，依赖环境</h2><ul>
+<li>操作系统：Centos6.5</li>
+<li>storm版本：apache-storm-1.0.3</li>
+<li>jdk版本：1.7.0_121</li>
+<li>zookeeper版本：zookeeper-3.4.10</li>
+<li>jdk版本：1.7.0_121</li>
+<li>kafka版本：kafka_2.10-0.8.2.1</li>
+</ul>
+<h2 id="三，实现dau统计"><a href="#三，实现dau统计" class="headerlink" title="三，实现dau统计"></a>三，实现dau统计</h2><h3 id="1-业务描述"><a href="#1-业务描述" class="headerlink" title="1, 业务描述"></a>1, 业务描述</h3><p>(1) 现 有用户登录，和用户登出两类登录日志,分别存储在kafka playerLogin主题和playerLogout主题中。首先需要我们将两类日志合并，因为都属于用户的活跃日志。</p>
+<p>(2) 合并日志后，根据 平台+区服+vip等级分组，统计总的活跃用户数。</p>
+<h3 id="2-实现逻辑"><a href="#2-实现逻辑" class="headerlink" title="2,实现逻辑"></a>2,实现逻辑</h3><p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/uv-storm_2.png" alt="Alt text"></p>
+<p>(1) playerLogin是kafka的登录日志主题，playerLogout是kafka的登出日志主题。</p>
+<p>(2) 使用spout_login 消费 playerLogin主题，使用spout_logout 消费 playerLogout主题。</p>
+<p>(3) 使用blot_split_login 将接收到的登录日志，解析成对象，并从这里面挑选需要的信息发射到下一个blot做处理。blot_split_logout同理，解析登出日志并发射。</p>
+<p>(4) blot_union_distinct 将接收到的用户信息，进行缓存。根据 (游戏+平台+区服+level+uid) md5 作为key，将用户信息进行缓存，并去重用户多余登录信息。将去重后的用户信息发射到blot_dau。</p>
+<p>(5) blot_dau 根据 (游戏+平台+区服+level)作为key，统计每个区服下相同等级用户的数量。将统计信息发射到 blot_load 进行入库处理。</p>
+<h3 id="3-名词解释"><a href="#3-名词解释" class="headerlink" title="3,名词解释"></a>3,名词解释</h3><p>(1) spout </p>
+<pre><code>spout是程序数据入口，充当数据采集器的角色，简介到数据将数据转化为tuple发射出去。一般都可以复用。  
+</code></pre><p>(2) blot</p>
+<pre><code>blot 是计算程序中的运算或者函数，将一个或者多个数据流作为输入。blot 可以订阅多个spout或者blot发射的数据流。 
+</code></pre><p>(3) tuple</p>
+<pre><code>blot数据流入的单位，既一条数据的流向被称作一个blot。
+</code></pre><p>(4) topology</p>
+<pre><code>topology 整个程序作为一个整体，被称作topology.类似上图的dau计算，整个被称之为一个topology任务。
+</code></pre><h3 id="4，topology-任务配置"><a href="#4，topology-任务配置" class="headerlink" title="4，topology 任务配置"></a>4，topology 任务配置</h3><p>(1) 代码划分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">String zkStr = &quot;localhost:2181/kafka&quot;;</div><div class="line"></div><div class="line">	public DauRunner(boolean is_debug, String zkStr) &#123;</div><div class="line">		this.is_debug = is_debug;</div><div class="line">		if (!is_debug) &#123;</div><div class="line">			this.zkStr = zkStr;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	// kafka topic name</div><div class="line">	final String TOPIC_LOGIN = &quot;playerLogin&quot;;</div><div class="line">	final String TOPIC_LOGOUT = &quot;playerLogout&quot;;</div><div class="line">	// spout name</div><div class="line">	final String SPOUT_LOGIN = &quot;spout_login&quot;;</div><div class="line">	final String SPOUT_LOGOUT = &quot;spout_logout&quot;;</div><div class="line">	// blot split name</div><div class="line">	final String BLOT_SPLIT_LOGIN = &quot;blot_split_login&quot;;</div><div class="line">	final String BLOT_SPLIT_LOGOUT = &quot;blot_split_logout&quot;;</div><div class="line">	// topology name</div><div class="line">	final String TOPOLOGY_NAME = &quot;dau_topic_top&quot;;</div><div class="line">	// distinct openid blot</div><div class="line">	final String BLOT_UNION = &quot;blot_union_distinct&quot;;</div><div class="line"></div><div class="line">	final String BLOT_DAU = &quot;blot_dau&quot;;</div><div class="line">	final String BLOT_LOADDATA = &quot;blot_load&quot;;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void run() &#123;</div><div class="line">		TopologyBuilder builder = new TopologyBuilder();</div><div class="line">		// 设置登录信息spout</div><div class="line">		builder.setSpout(SPOUT_LOGIN, new KafkaSpout(spoutConf(TOPIC_LOGIN, zkStr, is_debug)));</div><div class="line">		builder.setBolt(BLOT_SPLIT_LOGIN, new PlayerLoginSplitBlot(), 2).setNumTasks(4).shuffleGrouping(SPOUT_LOGIN);</div><div class="line">		// 设置登出spout</div><div class="line">		builder.setSpout(SPOUT_LOGOUT, new KafkaSpout(spoutConf(TOPIC_LOGOUT, zkStr, is_debug)));</div><div class="line">		builder.setBolt(BLOT_SPLIT_LOGOUT, new PlayerLogoutSplitBlot(), 2).setNumTasks(4).shuffleGrouping(SPOUT_LOGOUT);</div><div class="line">		// union login 和logout信息,并去重用户。保证相同的用户发到同一个blot</div><div class="line">		builder.setBolt(BLOT_UNION, new DistinctVopIdBlot(), 2).setNumTasks(4)</div><div class="line">				.fieldsGrouping(BLOT_SPLIT_LOGIN, new Fields(&quot;dt&quot;, &quot;game&quot;, &quot;platform&quot;, &quot;gamesvrid&quot;, &quot;viplevel&quot;, &quot;vopenid&quot;))</div><div class="line">				.fieldsGrouping(BLOT_SPLIT_LOGOUT, new Fields(&quot;dt&quot;, &quot;game&quot;, &quot;platform&quot;, &quot;gamesvrid&quot;, &quot;viplevel&quot;, &quot;vopenid&quot;));</div><div class="line">		// dau 聚合blot，缓存每个区服下的dua总数</div><div class="line">		builder.setBolt(BLOT_DAU, new PlatformDistVopidCountBlot(), 2).setNumTasks(4)</div><div class="line">				.fieldsGrouping(BLOT_UNION, new Fields(&quot;dt&quot;, &quot;game&quot;, &quot;platform&quot;, &quot;gamesvrid&quot;, &quot;viplevel&quot;));</div><div class="line">		// // 入库blot，将数据更新至数据库</div><div class="line">		builder.setBolt(BLOT_LOADDATA, new PlatFormDistActiveUserBolt(), 1).setNumTasks(1).globalGrouping(BLOT_DAU);</div><div class="line"></div><div class="line">		if (is_debug) &#123;</div><div class="line">			LocalCluster cluster = new LocalCluster();</div><div class="line">			cluster.submitTopology(TOPOLOGY_NAME, blotConf(), builder.createTopology());</div><div class="line">			Utils.sleep(30 * 60 * 1000);</div><div class="line">			cluster.killTopology(TOPOLOGY_NAME);</div><div class="line">			cluster.shutdown();</div><div class="line">		&#125; else &#123;</div><div class="line">			Config conf = blotConf();</div><div class="line">			conf.setDebug(true);</div><div class="line">			conf.setNumWorkers(2);</div><div class="line">			try &#123;</div><div class="line">				StormSubmitter.submitTopology(TOPOLOGY_NAME, conf, builder.createTopology());</div><div class="line">			&#125; catch (Exception e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>(1) spout_login 与 spout_logout 设置任务数为1，执行线程数为1。</p>
+<p>(2) blot_split_login 与 blot_split_logout 设置2个线程执行，每个线程执行2个任务。</p>
+<p>(3) blot_union_distinct 设置2个线程执行，每个线程执行2个任务。</p>
+<p>(4) blot_dau 设置2个线程执行，每个线程执行2个任务。</p>
+<p>(5) blot_load 设置1个线程执行，任务数为1。</p>
+<p>下面是单节点执行任务费配图：</p>
+<p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/uv-storm_3.png" alt="Alt text"></p>
+<h3 id="5，storm-分组介绍"><a href="#5，storm-分组介绍" class="headerlink" title="5，storm 分组介绍"></a>5，storm 分组介绍</h3><p>(1), shuffleGrouping</p>
+<p>将流分组定义为混排。这种混排分组意味着来自Spout的输入将混排，或随机分发给此Bolt中的任务。shuffle grouping对各个task的tuple分配的比较均匀。</p>
+<p>(2), fieldsGrouping</p>
+<p>这种grouping机制保证相同field值的tuple会去同一个task，这对于WordCount来说非常关键，如果同一个单词不去同一个task，那么统计出来的单词次数就不对了。</p>
+<p>(3), All grouping</p>
+<p>广播发送， 对于每一个tuple将会复制到每一个bolt中处理。</p>
+<p>(4), Global grouping</p>
+<p>Stream中的所有的tuple都会发送给同一个bolt任务处理，所有的tuple将会发送给拥有最小task_id的bolt任务处理。</p>
+<p>(5), None grouping</p>
+<p>不关注并行处理负载均衡策略时使用该方式，目前等同于shuffle grouping,另外storm将会把bolt任务和他的上游提供数据的任务安排在同一个线程下。</p>
+<p>(6), Direct grouping</p>
+<p>由tuple的发射单元直接决定tuple将发射给那个bolt，一般情况下是由接收tuple的bolt决定接收哪个bolt发射的Tuple。这是一种比较特别的分组方法，用这种分组意味着消息的发送者指定由消息接收者的哪个task处理这个消息。 只有被声明为Direct Stream的消息流可以声明这种分组方法。而且这种消息tuple必须使用emitDirect方法来发射。消息处理者可以通过TopologyContext来获取处理它的消息的taskid (OutputCollector.emit方法也会返回taskid)</p>
+<h5 id="关联业务："><a href="#关联业务：" class="headerlink" title="关联业务："></a>关联业务：</h5><pre><code>. blot_split_login和 blot_split_logout,我们使用shuffleGrouping,将数据平均分配出去。
+. blot_union_distinct 和 blot_dau,我们使用fieldsGrouping，通过 游戏+平台+区服+level将信息进行分组。保证相同用户的信息都能进入同一个blot进行处理。
+. blot_load 我们使用 Global grouping 分组，将所有统计后的信息发射到同一个blot进行入库.防止更改信息时锁表。
+</code></pre><p>###6, 本地调试和集群运行</p>
+<h4 id="本地调试"><a href="#本地调试" class="headerlink" title="本地调试"></a>本地调试</h4><pre><code>. 使用debug模式，运行com.playcrab.storm.demo.TopologyRunner类,传入参数 true 127.0.0.1:2181/kafka.
+. 启动com.playcrab.kafka.SentMsg 类，将信息存储到kafka主题中。
+</code></pre><h4 id="集群运行"><a href="#集群运行" class="headerlink" title="集群运行"></a>集群运行</h4><pre><code>. 在numbus上执行命令, ${storm_home}/storm jar storm-demo-0.0.1-SNAPSHOT.jar 
+com.playcrab.storm.demo.TopologyRunner  
+false 
+172.16.8.152,172.16.8.153,172.16.8.154:2181/kafkaa
+</code></pre><h3 id="关于事例代码"><a href="#关于事例代码" class="headerlink" title="关于事例代码"></a>关于事例代码</h3><pre><code>. 为什么没有使用TridentTopology ? 使用中发现并没有想象中强大，而且封装的也不是很友好，不好理解也不易于维护。
+. TODO ，有功夫的话，会使用redis作为缓存方案，不会直接用java的数据结构。
+. 事例地址：git@github.com:nick-weixx/storm-demo.git
+</code></pre><h3 id="关于storm的理解"><a href="#关于storm的理解" class="headerlink" title="关于storm的理解"></a>关于storm的理解</h3><pre><code>. 它并不适合做中间数据清洗层，代码编写量巨大，且缓存信息操作过多。
+. 不适合做过多的数据指标，或者多维度统计，也是一样的原因。写的过多不易于维护和代码编写。
+. 适合做简单的，重要指标的实时统计，且维度固定。
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/25/storm-uv-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-storm-wordcount-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/27/storm-wordcount-1/">storm wordcount样例详解</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/27/storm-wordcount-1/" class="archive-article-date">
+  	<time datetime="2017-07-27T10:08:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在研究storm，一点点记录希望可以对工作有所帮助。</p>
+<h2 id="1-storm分组介绍"><a href="#1-storm分组介绍" class="headerlink" title="1,storm分组介绍"></a>1,storm分组介绍</h2><p>1, shuffleGrouping</p>
+<p>将流分组定义为混排。这种混排分组意味着来自Spout的输入将混排，或随机分发给此Bolt中的任务。shuffle grouping对各个task的tuple分配的比较均匀。</p>
+<p>2, fieldsGrouping</p>
+<p>这种grouping机制保证相同field值的tuple会去同一个task，这对于WordCount来说非常关键，如果同一个单词不去同一个task，那么统计出来的单词次数就不对了。</p>
+<p>3, All grouping</p>
+<p>广播发送， 对于每一个tuple将会复制到每一个bolt中处理。</p>
+<p>4, Global grouping</p>
+<p>Stream中的所有的tuple都会发送给同一个bolt任务处理，所有的tuple将会发送给拥有最小task_id的bolt任务处理。</p>
+<p>5, None grouping</p>
+<p>不关注并行处理负载均衡策略时使用该方式，目前等同于shuffle grouping,另外storm将会把bolt任务和他的上游提供数据的任务安排在同一个线程下。</p>
+<p>6, Direct grouping</p>
+<p>由tuple的发射单元直接决定tuple将发射给那个bolt，一般情况下是由接收tuple的bolt决定接收哪个bolt发射的Tuple。这是一种比较特别的分组方法，用这种分组意味着消息的发送者指定由消息接收者的哪个task处理这个消息。 只有被声明为Direct Stream的消息流可以声明这种分组方法。而且这种消息tuple必须使用emitDirect方法来发射。消息处理者可以通过TopologyContext来获取处理它的消息的taskid (OutputCollector.emit方法也会返回taskid)</p>
+<h2 id="2-wordcount-事例分析"><a href="#2-wordcount-事例分析" class="headerlink" title="2, wordcount 事例分析"></a>2, wordcount 事例分析</h2><h3 id="2-1-创建spout-模拟数据发送"><a href="#2-1-创建spout-模拟数据发送" class="headerlink" title="2.1 创建spout 模拟数据发送"></a>2.1 创建spout 模拟数据发送</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">import org.apache.storm.spout.SpoutOutputCollector;</div><div class="line">import org.apache.storm.task.TopologyContext;</div><div class="line">import org.apache.storm.topology.OutputFieldsDeclarer;</div><div class="line">import org.apache.storm.topology.base.BaseRichSpout;</div><div class="line">import org.apache.storm.tuple.Fields;</div><div class="line">import org.apache.storm.tuple.Values;</div><div class="line">import org.apache.storm.utils.Utils;</div><div class="line"></div><div class="line">public class RandomSentenceSpout extends BaseRichSpout &#123;</div><div class="line">  SpoutOutputCollector _collector;</div><div class="line">  Random _rand;</div><div class="line"></div><div class="line"></div><div class="line">  @Override</div><div class="line">  public void open(Map conf, TopologyContext context, SpoutOutputCollector collector) &#123;</div><div class="line">    _collector = collector;</div><div class="line">    _rand = new Random();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public void nextTuple() &#123;</div><div class="line">    Utils.sleep(100);</div><div class="line">    String[] sentences = new String[]&#123; &quot;the cow jumped over the moon&quot;, &quot;an apple a day keeps the doctor away&quot;,</div><div class="line">        &quot;four score and seven years ago&quot;, &quot;snow white and the seven dwarfs&quot;, &quot;i am at two with nature&quot; &#125;;</div><div class="line">    String sentence = sentences[_rand.nextInt(sentences.length)];</div><div class="line">    _collector.emit(new Values(sentence));</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public void ack(Object id) &#123;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public void fail(Object id) &#123;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public void declareOutputFields(OutputFieldsDeclarer declarer) &#123;</div><div class="line">    declarer.declare(new Fields(&quot;word&quot;));</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>说明： 必须继承BaseRichSpout类,重写方法定义</p>
+<p> 1，open()方法，既初始化方法，会传入storm的配置信息，输出类SpoutOutputCollector.我们在这个方法中初始化随机数Random类，接收SpoutOutputCollector.</p>
+<p> 2, nextTuple() 方法，既写入tuple的数据流方法，这里面我们随机取字符串，发射数据。如果要确保数据处理是否成功，需要传送一个msgId,例:collector.emit(values, msgId),msgId需要自己定义。</p>
+<p> 3，ack(Object id)方法,既锚定方法.如果数据被处理成功会调用此方法。未处理</p>
+<p> 4,fail(Object id)方法，如果数据处理失败,则会调用fail方法。未处理</p>
+<p> 5, declareOutputFields 方法，用于描述输出流的数据名称定义。</p>
+<h3 id="2-2-创建SplitSentence类，分割输入信息"><a href="#2-2-创建SplitSentence类，分割输入信息" class="headerlink" title="2.2 创建SplitSentence类，分割输入信息"></a>2.2 创建SplitSentence类，分割输入信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">import org.apache.storm.Config;</div><div class="line">import org.apache.storm.LocalCluster;</div><div class="line">import org.apache.storm.StormSubmitter;</div><div class="line">import org.apache.storm.task.ShellBolt;</div><div class="line">import org.apache.storm.topology.BasicOutputCollector;</div><div class="line">import org.apache.storm.topology.IRichBolt;</div><div class="line">import org.apache.storm.topology.OutputFieldsDeclarer;</div><div class="line">import org.apache.storm.topology.TopologyBuilder;</div><div class="line">import org.apache.storm.topology.base.BaseBasicBolt;</div><div class="line">import org.apache.storm.tuple.Fields;</div><div class="line">import org.apache.storm.tuple.Tuple;</div><div class="line">import org.apache.storm.tuple.Values;</div><div class="line">import org.apache.storm.starter.spout.RandomSentenceSpout;</div><div class="line"></div><div class="line"> public class SplitSentence extends BaseBasicBolt &#123;</div><div class="line"></div><div class="line">		@Override</div><div class="line">		public void declareOutputFields(OutputFieldsDeclarer declarer) &#123;</div><div class="line">			declarer.declare(new Fields(&quot;word&quot;));</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		@Override</div><div class="line">		public Map&lt;String, Object&gt; getComponentConfiguration() &#123;</div><div class="line">			Config conf = new Config();</div><div class="line">			conf.put(conf.TOPOLOGY_TICK_TUPLE_FREQ_SECS, 10);</div><div class="line">			return conf;</div><div class="line"></div><div class="line">		&#125;</div><div class="line"></div><div class="line">		@Override</div><div class="line">		public void execute(Tuple input, BasicOutputCollector collector) &#123;</div><div class="line">			// TODO Auto-generated method stub</div><div class="line">			if (input.getSourceComponent()</div><div class="line">					.equals(Constants.SYSTEM_COMPONENT_ID)</div><div class="line">					&amp;&amp; input.getSourceStreamId().equals(</div><div class="line">							Constants.SYSTEM_TICK_STREAM_ID)) &#123;</div><div class="line">				System.out.println(&quot;每10s，执行定时器&quot;);</div><div class="line">			&#125;</div><div class="line">			String[] val = input.getString(0).split(&quot; &quot;);</div><div class="line">			for (int i = 0; i &lt; val.length; i++) &#123;</div><div class="line">				collector.emit(new Values(val[i]));</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>说明：必须继承BaseBasicBolt类，重写其方法</p>
+<p>1, execute(Tuple input, BasicOutputCollector collector)方法，在这里编写输出流逻辑。我们直接在这里切割了语句，将单次作为一行数据发送出去。</p>
+<p>2, declareOutputFields(OutputFieldsDeclarer declarer)方法，定义输出数据的名称。</p>
+<p>3, getComponentConfiguration方法，可以设置对于单个bolt 的配置。例:<br>bolt 每个10秒执行一次,可以用于清理缓存信息等.</p>
+<h3 id="2-3-创建WordCountBolt类，统计单次个数"><a href="#2-3-创建WordCountBolt类，统计单次个数" class="headerlink" title="2.3 创建WordCountBolt类，统计单次个数"></a>2.3 创建WordCountBolt类，统计单次个数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">import java.util.HashMap;</div><div class="line">import java.util.Map;</div><div class="line"></div><div class="line">import org.apache.storm.task.OutputCollector;</div><div class="line">import org.apache.storm.task.TopologyContext;</div><div class="line">import org.apache.storm.topology.OutputFieldsDeclarer;</div><div class="line">import org.apache.storm.topology.base.BaseRichBolt;</div><div class="line">import org.apache.storm.tuple.Fields;</div><div class="line">import org.apache.storm.tuple.Tuple;</div><div class="line">import org.apache.storm.tuple.Values;</div><div class="line"></div><div class="line">public class WordCountBolt extends BaseRichBolt &#123;</div><div class="line"></div><div class="line">	private OutputCollector collector;</div><div class="line">	private Map&lt;String, Long&gt; counts = null;</div><div class="line">	/**</div><div class="line">	 * </div><div class="line">	 */</div><div class="line">	private static final long serialVersionUID = 1000003L;</div><div class="line"></div><div class="line">	public void prepare(Map stormConf, TopologyContext context,</div><div class="line">			OutputCollector collector) &#123;</div><div class="line">		this.collector = collector;</div><div class="line">		counts = new HashMap&lt;String, Long&gt;();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void execute(Tuple input) &#123;</div><div class="line">		String word = input.getStringByField(&quot;word&quot;);</div><div class="line">		Long count = this.counts.get(word);</div><div class="line">		if (count == null) &#123;</div><div class="line">			count = 0L;</div><div class="line">		&#125;</div><div class="line">		count++;</div><div class="line">		this.counts.put(word, count);</div><div class="line">		this.collector.emit(new Values(word, count));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void declareOutputFields(OutputFieldsDeclarer declarer) &#123;</div><div class="line">		declarer.declare(new Fields(&quot;word&quot;, &quot;count&quot;));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>BaseRichBolt与BaseBasicBolt的区别，下次再说(TODO)</p>
+<p>1,通过counts 统计每个单次的出现次数,输出两列，分别为 (单词，出现数量)</p>
+<h3 id="2-4-创建ReportBolt类，打印报告"><a href="#2-4-创建ReportBolt类，打印报告" class="headerlink" title="2.4 创建ReportBolt类，打印报告"></a>2.4 创建ReportBolt类，打印报告</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">import java.util.ArrayList;</div><div class="line">import java.util.Collections;</div><div class="line">import java.util.HashMap;</div><div class="line">import java.util.List;</div><div class="line">import java.util.Map;</div><div class="line"></div><div class="line">import org.apache.storm.task.OutputCollector;</div><div class="line">import org.apache.storm.task.TopologyContext;</div><div class="line">import org.apache.storm.topology.OutputFieldsDeclarer;</div><div class="line">import org.apache.storm.topology.base.BaseRichBolt;</div><div class="line">import org.apache.storm.tuple.Tuple;</div><div class="line"></div><div class="line">public class ReportBolt extends BaseRichBolt &#123;</div><div class="line"></div><div class="line">	/**</div><div class="line">	 * </div><div class="line">	 */</div><div class="line">	private static final long serialVersionUID = 100000004L;</div><div class="line">	private Map&lt;String, Long&gt; counts;</div><div class="line"></div><div class="line">	public void prepare(Map stormConf, TopologyContext context,</div><div class="line">			OutputCollector collector) &#123;</div><div class="line">		this.counts = new HashMap&lt;String, Long&gt;();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void execute(Tuple input) &#123;</div><div class="line">		String word=input.getStringByField(&quot;word&quot;);</div><div class="line">		Long count =input.getLongByField(&quot;count&quot;);</div><div class="line">		this.counts.put(word, count);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public void declareOutputFields(OutputFieldsDeclarer declarer) &#123;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	@Override</div><div class="line">	public void cleanup() &#123;</div><div class="line">		System.out.println(&quot;---FINAL COUNTS---&quot;);</div><div class="line">		List&lt;String&gt; keys =new ArrayList&lt;String&gt;();</div><div class="line">		keys.addAll(counts.keySet());</div><div class="line">		Collections.sort(keys);</div><div class="line">		for (String key : keys) &#123;</div><div class="line">			System.out.println(key+&quot; : &quot;+this.counts.get(key));</div><div class="line">		&#125;</div><div class="line">		System.out.println(&quot;-----------------&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>1，execute方法，缓存所有单词信息<br>2，cleanup方法，整个程序结束时调用的清理方法，我们在这里打印统计信息</p>
+<h3 id="2-5-创建WordCountTopology类，串联任务"><a href="#2-5-创建WordCountTopology类，串联任务" class="headerlink" title="2.5 创建WordCountTopology类，串联任务"></a>2.5 创建WordCountTopology类，串联任务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line">import org.apache.storm.Config;</div><div class="line">import org.apache.storm.LocalCluster;</div><div class="line">import org.apache.storm.StormSubmitter;</div><div class="line">import org.apache.storm.generated.AlreadyAliveException;</div><div class="line">import org.apache.storm.generated.AuthorizationException;</div><div class="line">import org.apache.storm.generated.InvalidTopologyException;</div><div class="line">import org.apache.storm.generated.StormTopology;</div><div class="line">import org.apache.storm.topology.TopologyBuilder;</div><div class="line">import org.apache.storm.tuple.Fields;</div><div class="line"></div><div class="line">public class WordCountTopology &#123;</div><div class="line">	private static final String SENTENCE_SPOUT_ID = &quot;sentence-spout&quot;;</div><div class="line">	private static final String SPLIT_BOLT_ID = &quot;split-bolt&quot;;</div><div class="line">	private static final String COUNT_BOLT_ID = &quot;count-bolt&quot;;</div><div class="line">	private static final String REPORT_BOLT_ID = &quot;report-bolt&quot;;</div><div class="line">	private static final String TOPOLOGY_NAME = &quot;word-count-topology&quot;;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		RandomSentenceSpout spout = new RandomSentenceSpout();</div><div class="line">		SplitSentenceBolt splitBolt = new SplitSentenceBolt();</div><div class="line">		WordCountBolt countBolt = new WordCountBolt();</div><div class="line">		ReportBolt reportBolt = new ReportBolt();</div><div class="line">		TopologyBuilder builder = new TopologyBuilder();</div><div class="line">		builder.setSpout(SENTENCE_SPOUT_ID, spout, 2);</div><div class="line"></div><div class="line">		builder.setBolt(SPLIT_BOLT_ID, splitBolt, 2).setNumTasks(4)</div><div class="line">				.shuffleGrouping(SENTENCE_SPOUT_ID);</div><div class="line">		//  相同的word发送到同一个 bolt</div><div class="line">		builder.setBolt(COUNT_BOLT_ID, countBolt, 4).fieldsGrouping(</div><div class="line">				SPLIT_BOLT_ID, new Fields(&quot;word&quot;));</div><div class="line">		builder.setBolt(REPORT_BOLT_ID, reportBolt).globalGrouping(</div><div class="line">				COUNT_BOLT_ID);</div><div class="line"></div><div class="line">		Config config = new Config();</div><div class="line">		config.setNumWorkers(2);</div><div class="line">		try &#123;</div><div class="line">			submit(false, TOPOLOGY_NAME, config, builder.createTopology());</div><div class="line">		&#125; catch (AlreadyAliveException e) &#123;</div><div class="line">			System.out.println(&quot;此任务已存在&quot;);</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; catch (InvalidTopologyException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">			System.out.println(&quot;初始化错误&quot;);</div><div class="line">		&#125; catch (AuthorizationException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">			System.out.println(&quot;权限问题&quot;);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	private static void debug(String topologyName, Config config,</div><div class="line">			StormTopology topology) &#123;</div><div class="line">		LocalCluster cluster = new LocalCluster();</div><div class="line"></div><div class="line">		try &#123;</div><div class="line">			cluster.submitTopology(topologyName, config, topology);</div><div class="line">			Thread.sleep(50 * 1000);</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		cluster.killTopology(TOPOLOGY_NAME);</div><div class="line">		cluster.shutdown();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	private static void submit(boolean isbug, String topologyName,</div><div class="line">			Config config, StormTopology topology)</div><div class="line">			throws AlreadyAliveException, InvalidTopologyException,</div><div class="line">			AuthorizationException &#123;</div><div class="line">		StormSubmitter.submitTopology(topologyName, config, topology);</div><div class="line"></div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p>说明：</p>
+<p>1，创建TopologyBuilder类，串联各个任务</p>
+<p>2，设置RandomSentenceSpout spout任务，并行两个Executor(Thread)线程处理</p>
+<p>3,设置切割任务SplitSentenceBolt,并行两个Executor(Thread)线程,每个线程处理2个任务。shuffleGrouping 分组，平均分配给各个blot。</p>
+<p>4,设置WordCountBolt任务，并行4个Executor(Thread)线程,每个线程处理1个任务。根据字段名称分组(fieldsGrouping)相同的进入一组。</p>
+<p>5,设置ReportBolt任务，全局分组(globalGrouping)。所有输出分到一个blot做处理。</p>
+<p>6，config.setNumWorkers(2) ，设置两个jvm worker并行。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/27/storm-wordcount-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-live-car" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/27/live-car/">车辆出险处理总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/27/live-car/" class="archive-article-date">
+  	<time datetime="2017-07-27T06:02:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>买车也有一段时间了，虽然还没有和别人发生过车辆剐蹭，但是恶心事儿确实碰到过两件。处理的不太好，后期总结了一下，希望以后可以有帮助。</p>
+<p>##小区内被路人剐蹭</p>
+<p>5月20号下午，下楼买东西，发现车辆左前侧叶子板上出现两个小坑儿。观看了行车记录仪，发现是两个中年人抬冰箱时，冰箱跌倒砸到了车子。当时非常生气，直接给110打了电话，警察让我们查询小区监控，尴尬的是物业说我们停车的那儿没有监控，这事儿后来也就不了了之了。</p>
+<p>总结：碰到这种倒霉事儿，找物业基本没用，报警也没啥用。虽然属于故意损坏他人财务，但当时没有抓到现行基本上就是无解的。只能认倒霉，走车损险。</p>
+<h2 id="小区内被机动车剐蹭"><a href="#小区内被机动车剐蹭" class="headerlink" title="小区内被机动车剐蹭"></a>小区内被机动车剐蹭</h2><p>7月18日下午，车辆在小区路边停车位停靠，被没有牌照的摩托车，剐蹭了后保险杠。当时抓到了人，并打122报了警，交警2个小时后到达。直接认定无牌照摩托车全责，但是填写完处理单后，直接说了一句，“你们自己协调解决就跑了(人民警察，你懂得)”。当时打电话给S4店，报价维修金额为2000，和肇事人扯皮了两天给了1000块钱解决。</p>
+<p>总结：</p>
+<p>1，手机里必须有一个所属品牌4S店人员的电话，哪怕是当时买车给你的人。这样他才能根据照片，找售后预估定损。毕竟我们不是业内人士，很难评估出价格。</p>
+<p>2，遇到这种没牌照车辆，一定不要起冲突。逼急了他一分钱也不赔偿你，你照样找不到人。</p>
+<p>3，交警处理单上是有本人姓名，电话，车辆牌照，居住地址的。自己要见好就收，你懂得。别到时候他偷偷使坏，你也没办法。</p>
+<p>4，能不报警还是不要报警了，除非有牌照的汽车(因为他不处理违章，他是没办法上保险，检验车辆的)。报警以后再想走保险是不可能的，因为这属于他人责任，是不能走车损的。</p>
+<p>最后，希望开车的朋友记住一句话，远离非机动车行人，远离大货车。这些都惹不起，都是爷。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">live</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/27/live-car/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-spring-aop-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/25/spring-aop-1/">spring AOP 获取目标方法参数</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/25/spring-aop-1/" class="archive-article-date">
+  	<time datetime="2017-06-25T10:46:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="获取目标方法的信息"><a href="#获取目标方法的信息" class="headerlink" title="获取目标方法的信息"></a>获取目标方法的信息</h2><h3 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h3><p>访问目标方法最简单的做法是定义增强处理方法时，将第一个参数定义为JoinPoint类型，当该增强处理方法被调用时，该JoinPoint参数就代表了织入增强处理的连接点。JoinPoint里包含了如下几个常用的方法：</p>
+<p>Object[] getArgs：返回目标方法的参数</p>
+<p>Signature getSignature：返回目标方法的签名</p>
+<p>Object getTarget：返回被织入增强处理的目标对象</p>
+<p>Object getThis：返回AOP框架为目标对象生成的代理对象</p>
+<p>中定义了Before、Around、AfterReturning 3个增强处理，并分别在3种增强处理中访问被织入增强处理的目标方法、目标方法的参数和被织入增强处理的目标对象等：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 方法调用之前 aop:before</div><div class="line"> * </div><div class="line"> * @param join</div><div class="line"> */</div><div class="line">public void befor(JoinPoint point) &#123;</div><div class="line">	 log.info(String.format(&quot;begin func: %s ,param: %s&quot;, point.getSignature().getDeclaringTypeName() + </div><div class="line">                &quot;.&quot; + point.getSignature().getName(),point.getArgs()));</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * around 调用前后</div><div class="line"> * o</div><div class="line"> * @param point</div><div class="line"> * @return</div><div class="line"> * @throws Throwable</div><div class="line"> */</div><div class="line">public Object paramProcess(ProceedingJoinPoint point) throws Throwable &#123;</div><div class="line">	// 访问目标方法的参数处理</div><div class="line">	Object[] args = point.getArgs();</div><div class="line">	// 用改变后的参数执行目标方法</div><div class="line">	Object returnValue = point.proceed(args);</div><div class="line">	System.out.println(&quot;@Around：执行目标方法之后...&quot;);</div><div class="line">	System.out.println(&quot;@Around：被织入的目标对象为：&quot; + point.getTarget());</div><div class="line">	return &quot;原返回值：&quot; + returnValue + &quot;，这是返回结果的后缀&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * 方法调用之后处理</div><div class="line"> */</div><div class="line">public void end(JoinPoint point) &#123;</div><div class="line">	 log.info(String.format(&quot;end func: %s ,param: %s&quot;, point.getTarget(),point.getArgs()));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>###目标方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">package com.xxx.test</div><div class="line">public class TargetFun&#123;</div><div class="line">	public void getData1()&#123;</div><div class="line">		System.out.println(&quot;我是目标方法.....&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="配置部分"><a href="#配置部分" class="headerlink" title="配置部分"></a>配置部分</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;bean name=&quot;aopInter&quot; class=&quot;com.xxx.aop.Interceptor&quot; /&gt;</div><div class="line">	&lt;aop:config&gt;</div><div class="line">		&lt;aop:aspect ref=&quot;aopInter&quot;&gt;</div><div class="line">			 &lt;aop:around method=&quot;paramProcess&quot; pointcut=&quot;execution(* com.xxx.test.*.getData*(..)) /&gt; </div><div class="line">			&lt;aop:before method=&quot;befor&quot;</div><div class="line">				pointcut=&quot;execution(* com.xxx.test.*.getData*(..))&quot; /&gt;</div><div class="line">			&lt;aop:after-returning method=&quot;end&quot;</div><div class="line">				pointcut=&quot;execution(* com.xxx.test.*.getData*(..))&quot;  /&gt; </div><div class="line">		&lt;/aop:aspect&gt;</div><div class="line">	&lt;/aop:config&gt;</div></pre></td></tr></table></figure>
+<h3 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">ClassPathXmlApplicationContext context = null;</div><div class="line">TargetFun targetFun = null;</div><div class="line"></div><div class="line">@Before</div><div class="line">public void init() &#123;</div><div class="line">	String[] configs = &#123; &quot;classpath:spring/spring-platform-xxx.xml&quot; &#125;;</div><div class="line">	context = new ClassPathXmlApplicationContext(configs);</div><div class="line">	targetFun = (TargetFun) context.getBean(&quot;test&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">	@Test</div><div class="line">public void testAopParam() &#123;</div><div class="line">	targetFun. getData1();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/25/spring-aop-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-solr-language-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/25/solr-language-1/">solr 语法简介</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/25/solr-language-1/" class="archive-article-date">
+  	<time datetime="2017-06-25T09:39:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、-查询参数说明"><a href="#一、-查询参数说明" class="headerlink" title="一、 查询参数说明"></a>一、 查询参数说明</h2><table>
+<thead>
+<tr>
+<th>参数名</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:right">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>q</td>
+<td style="text-align:center">查询字符串,必须</td>
+<td style="text-align:right">q=name=wxx and sex=man(查询姓名是wxx并且性别男)</td>
+</tr>
+<tr>
+<td>fq</td>
+<td style="text-align:center">filter query,过滤查询,作用：在q查询符合结果中同时是fq查询符合的(可多个)</td>
+<td style="text-align:right">q=uid:xxx&amp;fq=log_date:[2017-02-09 TO 2017-02-10]</td>
+</tr>
+<tr>
+<td>fl</td>
+<td style="text-align:center">指定返回那些字段内容，用逗号或空格分隔多个</td>
+<td style="text-align:right">q=uid=xxx&amp;fl=action,platform</td>
+</tr>
+<tr>
+<td>start,rows</td>
+<td style="text-align:center">start 从第几条开始返回,rows 返回多少条，可用于分页</td>
+<td style="text-align:right">q=uid:xxx&amp;start=0&amp;rows=10</td>
+</tr>
+<tr>
+<td>sort</td>
+<td style="text-align:center">排序 desc asc</td>
+<td style="text-align:right">q=uid=xxx&amp;sort=uid+desc</td>
+</tr>
+<tr>
+<td>wt</td>
+<td style="text-align:center">指定输出格式( xml, json, php, python,csv…)</td>
+<td style="text-align:right">wt=json</td>
+</tr>
+<tr>
+<td>q.op</td>
+<td style="text-align:center">表示q 中 查询语句的 各条件的逻辑操作 AND(与) OR(或)</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>hl</td>
+<td style="text-align:center">是否高亮 ,如hl=true</td>
+<td style="text-align:right"></td>
+</tr>
+<tr>
+<td>hl.fl</td>
+<td style="text-align:center">高亮field,字段必须出现在查询条件中</td>
+<td style="text-align:right">hl.fl=uid,platform</td>
+</tr>
+<tr>
+<td>hl.snippets</td>
+<td style="text-align:center">默认是1,这里设置为3个片段</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>hl.simple.pre</td>
+<td style="text-align:center">高亮前面的格式</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>hl.simple.post</td>
+<td style="text-align:center">高亮后面的格式</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>facet</td>
+<td style="text-align:center">是否启动统计</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>facet.field</td>
+<td style="text-align:center">统计field</td>
+<td style="text-align:right">—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="二、-Solr运算符"><a href="#二、-Solr运算符" class="headerlink" title="二、 Solr运算符"></a>二、 Solr运算符</h2><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:right">例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“:”</td>
+<td style="text-align:center">指定字段查指定值</td>
+<td style="text-align:right">如返回所有值<em>:</em></td>
+</tr>
+<tr>
+<td>“?”</td>
+<td style="text-align:center">表示单个任意字符的通配</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>“~”</td>
+<td style="text-align:center">表示模糊检索</td>
+<td style="text-align:right">如检索拼写类似于”wxx~”的项这样写：wxx~将找到形如wxx和wxxx的单词；wxx~0.8，检索返回相似度在0.8以上的记录</td>
+</tr>
+<tr>
+<td>“^”</td>
+<td style="text-align:center">控制相关度检索</td>
+<td style="text-align:right">如检索相隔10个单词的”apache”和”jakarta”，”jakarta apache”~10</td>
+</tr>
+<tr>
+<td>AND,\</td>
+<td style="text-align:center">\</td>
+<td style="text-align:right">,OR,&amp;&amp;,NOT,!</td>
+<td>布尔操作符</td>
+<td>—</td>
+</tr>
+<tr>
+<td>()</td>
+<td style="text-align:center">用于构成子查询</td>
+<td style="text-align:right">—</td>
+</tr>
+<tr>
+<td>[]</td>
+<td style="text-align:center">包含范围检索</td>
+<td style="text-align:right">如检索某时间段记录，不包含头尾</td>
+</tr>
+</tbody>
+</table>
+<p>date:{200707 TO 200710}|<br>|/|转义操作符，特殊字符包括|—|</p>
+<p> 注：①“+”和”-“表示对单个查询单元的修饰，and 、or 、 not 是对两个查询单元是否做交集或者做差集还是取反的操作的符号</p>
+<p>比如:AB:china +AB:america ,表示的是AB:china忽略不计可有可无，必须满足第二个条件才是对的,而不是你所认为的必须满足这两个搜索条件</p>
+<p>如果输入:AB:china AND AB:america ,解析出来的结果是两个条件同时满足，即+AB:china AND +AB:america或+AB:china +AB:america</p>
+<h2 id="三、-Solr查询语法"><a href="#三、-Solr查询语法" class="headerlink" title="三、 Solr查询语法"></a>三、 Solr查询语法</h2><p>1.最普通的查询，比如查询姓魏的人（ Name:张）,如果是精准性搜索相当于SQL SERVER中的LIKE搜索这需要带引号（””）,比如查询含有北京的（Address:”北京”）</p>
+<p>2.多条件查询，注：如果是针对单个字段进行搜索的可以用（Name:搜索条件加运算符(OR、AND、NOT) Name：搜索条件）,比如模糊查询（ Name:张 OR Name:李 ）单个字段多条件搜索不建议这样写，一般建议是在单个字段里进行条件筛选，如（ Name:张 OR 李），多个字段查询（Name:张 + Address:北京 ）</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/25/solr-language-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-lily-hbase-index-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/24/lily-hbase-index-2/">lily hbase index 二级索引的实现</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/24/lily-hbase-index-2/" class="archive-article-date">
+  	<time datetime="2017-05-23T23:06:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>注明：因为这部分内容涉及到工作，所以笔者会将真实的业务逻辑隐藏，呈现的例子不具有很强的业务性，如果数据场景不恰当还请见谅，就当一个解决方案看一下就好。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>众所周知hbase是k-v 数据库，它只能通过key直接获取数据(get,scan),不能够实现类似于mysql组合索引方式的查询。因为这个原因一般在hbase key的设计中，会按照业务查询逻辑进行组合，但无论如何组合运用在很多场景中很不适用，不管运用协处理器还是正则匹配key效率都会非常的查。因此我们才行到运用solr建立索引，通过lily hbase index 做为中间件将需要索引的hbase列同步至solr，从而实现hbase的二级索引(组合索引)</p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/lily_index__2_1.png" alt="Alt text"></p>
+<p>(1) 在hbase中插入数据，通过 lily hbase index 自动叫需要索引的列同步至solr 中建立索引。(蓝色线)</p>
+<p>(2) 客户端(client)带入查询条件到 solr 索引集合，solr 找到符合条件的hbase key 返回给客户端。(黄色线)</p>
+<p>(3) 客户端(client) 根据返回的rowkey 查询hbase，返回查询到的结果。(绿色线)</p>
+<h2 id="实现样例"><a href="#实现样例" class="headerlink" title="实现样例"></a>实现样例</h2><p>上篇我们配置了lily hbase index，这篇我们继续运用上篇的配置信息。完成插入和查询的演示。</p>
+<h3 id="hbase-数据录入"><a href="#hbase-数据录入" class="headerlink" title="hbase 数据录入"></a>hbase 数据录入</h3><p>首先我们需要一份测试数据，并将数据录入到hbase中，录入的时候就会触发 lily 的Event事件，将数据索引信息同步至solr中。</p>
+<p>(1) 样例文件<br>我们有一份student.txt 文件存放于hdfs上,文件以tab符分割，顺序分别为[学生编号,姓名,性别,年龄,住址]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">000001	wxx	man	18	河北省廊坊市固安县</div><div class="line">000002	sgx	man	28	北京市昌平区</div><div class="line">000003	kfq	nv	30	青岛某小区</div><div class="line">000004	ys	man	20	山东某小区</div></pre></td></tr></table></figure>
+<p>(2) MR方式同步文件至hbase<br>本来直接调用hbase api就能够实现，而且非常简单，但我就是想往复杂了写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div></pre></td><td class="code"><pre><div class="line">public class StudentHbaseTool &#123;</div><div class="line"></div><div class="line">	public static class StudentHbaseMapper extends Mapper&lt;LongWritable, Text, Text, Text&gt; &#123;</div><div class="line">		// Map&lt;String, String&gt; platformMap = null;</div><div class="line">		String platformCode = &quot;&quot;;</div><div class="line">		final String SPLIT_CHAR_CODE = &quot;\t&quot;;</div><div class="line"></div><div class="line">		@Override</div><div class="line">		protected void setup(Mapper&lt;LongWritable, Text, Text, Text&gt;.Context context) throws IOException, InterruptedException &#123;</div><div class="line">			platformCode = context.getConfiguration().get(&quot;platform.code&quot;);</div><div class="line">			super.setup(context);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		public void map(LongWritable key, Text line, Context context) throws IOException, InterruptedException &#123;</div><div class="line">			String[] strs = line.toString().split(SPLIT_CHAR_CODE);</div><div class="line">			try &#123;</div><div class="line">				if (strs.length == 5) &#123;</div><div class="line">					String rowkey = strs[0];</div><div class="line">					context.write(new Text(rowkey), line);</div><div class="line">				&#125;</div><div class="line">			&#125; catch (Exception e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public static class StudentHbaseReducer extends TableReducer&lt;Text, Text, ImmutableBytesWritable&gt; &#123;</div><div class="line">		List&lt;String&gt; columns = null;</div><div class="line">		final String SPLIT_CHAR_CODE = &quot;\t&quot;;</div><div class="line">		 String log_date=null;</div><div class="line">		@Override</div><div class="line">		protected void setup(Reducer&lt;Text, Text, ImmutableBytesWritable, Mutation&gt;.Context context) throws IOException, InterruptedException &#123;</div><div class="line">			super.setup(context);</div><div class="line">			columns = Arrays.asList(context.getConfiguration().get(&quot;table.columns&quot;).split(&quot;,&quot;));</div><div class="line">			log_date=context.getConfiguration().get(&quot;log_date&quot;);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		@Override</div><div class="line">		protected void reduce(Text rowkey, Iterable&lt;Text&gt; value, Reducer&lt;Text, Text, ImmutableBytesWritable, Mutation&gt;.Context context)</div><div class="line">				throws IOException, InterruptedException &#123;</div><div class="line">			String k = rowkey.toString();</div><div class="line">			String family = &quot;data&quot;;</div><div class="line">			while (value.iterator().hasNext()) &#123;</div><div class="line">				Text textVal = value.iterator().next();</div><div class="line">				try &#123;</div><div class="line">					String[] row = textVal.toString().split(SPLIT_CHAR_CODE);</div><div class="line">					for (int i = 0; i &lt; row.length; i++) &#123;</div><div class="line">						String qualifier = columns.get(i);</div><div class="line">						String val = row[i];</div><div class="line">						Put put = new Put(k.getBytes());</div><div class="line">					   if(&quot;age&quot;.equals(qualifier))&#123;</div><div class="line">							put.add(Bytes.toBytes(family), Bytes.toBytes(qualifier), Bytes.toBytes(Integer.valueOf(val)));</div><div class="line">						&#125;else&#123;</div><div class="line">							put.add(Bytes.toBytes(family), Bytes.toBytes(qualifier), Bytes.toBytes(val));</div><div class="line">						&#125;</div><div class="line">						</div><div class="line">						context.write(new ImmutableBytesWritable(k.getBytes()), put);</div><div class="line">					&#125;</div><div class="line">					Put put = new Put(k.getBytes());</div><div class="line">					context.write(new ImmutableBytesWritable(k.getBytes()), put);					</div><div class="line">				&#125; catch (Exception e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public static void main(String[] args) &#123;</div><div class="line"></div><div class="line">		if (args == null || args.length != 1) &#123;</div><div class="line">			System.err.println(&quot;Usage: hadoop -jar xxx.jar &lt;platform&gt; &lt;log_date&gt;  &lt;inputfile&gt;&quot;);</div><div class="line">			System.exit(2);</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		HdfsUtils hdfsUtils = new HdfsUtils();</div><div class="line">		String defultPath = hdfsUtils.getDefultPath();</div><div class="line">		String filePath = defultPath + args[0];</div><div class="line">		try &#123;</div><div class="line">			String tableName = &quot;basic_data:user_info&quot;;</div><div class="line">			Configuration config = HBaseConfiguration.create();</div><div class="line">			config.set(&quot;table.columns&quot;, &quot;user_id,user_name,sex,age,address&quot;);</div><div class="line">			@SuppressWarnings(&quot;deprecation&quot;)</div><div class="line">			Job job = new Job(config, tableName);</div><div class="line">			job.setMapperClass(StudentHbaseMapper.class);</div><div class="line">			TableMapReduceUtil.initTableReducerJob(tableName, StudentHbaseReducer.class, job);</div><div class="line">			job.setMapOutputKeyClass(Text.class);</div><div class="line">			job.setMapOutputValueClass(Text.class);</div><div class="line">			FileInputFormat.addInputPath(job, new Path(filePath));</div><div class="line">			job.setJarByClass(StudentHbaseTool.class);</div><div class="line">			job.setInputFormatClass(LzoTextInputFormat.class);</div><div class="line"></div><div class="line">			boolean b = job.waitForCompletion(true);</div><div class="line">			if (!b) &#123;</div><div class="line">				throw new IOException(&quot;error with job!&quot;);</div><div class="line">			&#125;</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">			System.exit(2);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行命令，hadoop -jar student-hbase-toole.jar hdfs://xxxx:xxx/xxx/student.txt 将文件录入至 basic_data:user_info 表中，key是学生编号，列全部存入data列族下。</p>
+<h3 id="solr-数据查询"><a href="#solr-数据查询" class="headerlink" title="solr 数据查询"></a>solr 数据查询</h3><p>(1) 我们打开solr web页面，点击query页进行查询(基本的solr语法我们就不做说明了，有时间单独写一篇介绍) 在 q 这个文本框内输入条件 age=18,搜索出符合条件的数据索引,拿到id列(hbase 的key)。</p>
+<p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/lily_index__2_2.png" alt="Alt text"></p>
+<p>(2) 通过 hbase shell 进行数据查询，并执行命令 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">get &quot;basic_data:user_info&quot; &quot;000001&quot;</div></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/lily_index__2_3.png" alt="Alt text"></p>
+<p>说明：后面的查询步骤是可以通过api实现自动化的，需要自己封装，有时间的话会写一个事例上去给大家作参考。因为没有真实的环境，后面两张配图和事例中的业务有一些出入，希望大家可以见谅。下一次有时间我们详细说一下solr这个框架，或者说一下hbase的设计。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/24/lily-hbase-index-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-lily-hbase-index" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/22/lily-hbase-index/">lily hbase index 配置整理</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/22/lily-hbase-index/" class="archive-article-date">
+  	<time datetime="2017-05-22T04:29:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>注明：因为这部分内容涉及到工作，所以笔者会将真实的业务逻辑隐藏，呈现的例子不具有很强的业务性，如果数据场景不恰当还请见谅，就当一个解决方案看一下就好。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>CDH5.3.2中的Key-Value Indexer使用的是Lily Hbase NRT Indexer服务，Lily HBase Indexer是一款灵活的、可扩展的、高容错的、事务性的，并且近实时的处理HBase列索引数据的分布式服务软件。它是NGDATA公司开发的Lily系统的一部分，已开放源代码。Lily HBase Indexer使用SolrCloud来存储HBase的索引数据，当HBase执行写入、更新或删除操作时，Indexer通过HBase的replication功能来把这些操作抽象成一系列的Event事件，并用来保证写入Solr中的HBase索引数据的一致性。并且Indexer支持用户自定义的抽取，转换规则来索引HBase列数据。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="1-创建hbase表"><a href="#1-创建hbase表" class="headerlink" title="1. 创建hbase表"></a>1. 创建hbase表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">##创建名称为basicdata 的空间，类似于库的概念</div><div class="line">create_namespace &apos;basic_data&apos;</div><div class="line">##basic_data库中创建user_info表，指定列族名称为data，只留一个版本，采用lzo压缩，并开启同步功能。</div><div class="line">create &apos;basic_data:user_info&apos;,&#123;NAME =&gt; &apos;data&apos;, VERSIONS =&gt; 1,COMPRESSION =&gt; &apos;lzo&apos;,REPLICATION_SCOPE =&gt; 1&#125;</div></pre></td></tr></table></figure>
+<p>创建完成之后可以通过，<a href="http://xxxx.xxx.xx:60010" target="_blank" rel="external">http://xxxx.xxx.xx:60010</a> 查看表是否创建情况</p>
+<p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/lily_index_1.png" alt="Alt text"></p>
+<h3 id="2-创建SolrCloud-集合"><a href="#2-创建SolrCloud-集合" class="headerlink" title="2. 创建SolrCloud 集合"></a>2. 创建SolrCloud 集合</h3><p>(1） 使用 instancedir generate 命令,生成solr的基本配置文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solrctl instancedir --generate ~/weixingxin/basic_data:user_info</div></pre></td></tr></table></figure></p>
+<p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/lily%20index.png" alt="Alt text"></p>
+<p>(2) 修改~/weixingxin/basic_data:user_info/conf/schema.xml 文件，配置需要索引的列信息及规则。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;field name=&quot;user_id&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot; required=&quot;true&quot; multiValued=&quot;false&quot; /&gt;</div><div class="line">&lt;field name=&quot;user_name&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot; required=&quot;false&quot; multiValued=&quot;false&quot; /&gt;</div><div class="line">&lt;field name=&quot;sex&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot; required=&quot;false&quot; multiValued=&quot;false&quot; /&gt;</div><div class="line">&lt;field name=&quot;age&quot; type=&quot;long&quot; indexed=&quot;true&quot; stored=&quot;true&quot; required=&quot;false&quot; multiValued=&quot;false&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>(3)创建collection 名为basic_data_user_info</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solrctl instancedir --create basic_data_user_info ~/weixingxin/basic_data:user_info</div></pre></td></tr></table></figure>
+<p>运行命令后，solr会将文件同步到各个zookpeer节点上，实现分布式配置。</p>
+<p>(4) 创建basic_data_user_info 的分片数为4</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solrctl collection --create basic_data_user_info -s 4</div></pre></td></tr></table></figure>
+<p>(5)其他命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">##查看已经创建好的所有集合</div><div class="line">solrctl instancedir --list</div><div class="line">##删除创建好的solr索引</div><div class="line">solrctl collection --delete basic_data_user_info</div><div class="line">##删除集合配置</div><div class="line">solrctl instancedir --delete basic_data_user_info</div></pre></td></tr></table></figure></p>
+<p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/lily_index_2.png" alt="Alt text"></p>
+<h3 id="3-lily-index-配置"><a href="#3-lily-index-配置" class="headerlink" title="3. lily index 配置"></a>3. lily index 配置</h3><p>(1) 配置Morphlines文件，此文件映射了hbase的列与solr的关系</p>
+<p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/lily_index_3.png" alt="Alt text"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">SOLR_LOCATOR : &#123;</div><div class="line"># Name of solr collection</div><div class="line">collection : basic_data_user_info</div><div class="line"># ZooKeeper ensemble</div><div class="line">zkHost : &quot;$ZK_HOST&quot;</div><div class="line">&#125;</div><div class="line">morphlines : [</div><div class="line">&#123;</div><div class="line">	id : basic_data_user_info_Map</div><div class="line">	importCommands : [&quot;org.kitesdk.**&quot;, &quot;com.ngdata.**&quot;]</div><div class="line">	commands : [</div><div class="line">		&#123;</div><div class="line">			extractHBaseCells &#123;</div><div class="line">				mappings : [</div><div class="line">				&#123;</div><div class="line">				inputColumn : &quot;data:user_id&quot;</div><div class="line">				outputField : &quot;user_id&quot;</div><div class="line">				type : string</div><div class="line">				source : value</div><div class="line">				&#125;,</div><div class="line">				&#123;</div><div class="line">				inputColumn : &quot;data:user_name&quot;</div><div class="line">				outputField : &quot;user_name&quot;</div><div class="line">				type : long</div><div class="line">				source : value</div><div class="line">				&#125;,</div><div class="line">				&#123;</div><div class="line">				inputColumn : &quot;data:sex&quot;</div><div class="line">				outputField : &quot;sex&quot;</div><div class="line">				type : long</div><div class="line">				source : value</div><div class="line">				&#125;,</div><div class="line">				&#123;</div><div class="line">				inputColumn : &quot;data:age&quot;</div><div class="line">				outputField : &quot;age&quot;</div><div class="line">				type : string</div><div class="line">				source : value</div><div class="line">				&#125;]</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		&#123; logDebug &#123; format : &quot;output record: &#123;&#125;&quot;, args : [&quot;@&#123;&#125;&quot;] &#125; &#125;</div><div class="line">	]</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+<p>(2) 配置morphline-hbase-mapper.xml 文件，将Morphlines 与 hbase basic_data:user_info表 关联</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</div><div class="line"> &lt;!-- table：需要索引的HBase表名称--&gt;</div><div class="line"> &lt;!-- mapper：用来实现和读取指定的Morphline配置文件类，固定为MorphlineResultToSolrMapper--&gt;</div><div class="line">&lt;indexer table=&quot;basic_data:user_info&quot; read-row=&quot;never&quot;  mapper=&quot;com.ngdata.hbaseindexer.morphline.MorphlineResultToSolrMapper&quot;&gt;</div><div class="line">   &lt;!--param中的name参数用来指定当前配置为morphlineFile文件 --&gt;</div><div class="line">   &lt;!--value用来指定morphlines.conf文件的路径，绝对或者相对路径用来指定本地路径，如果是使用Cloudera Manager来管理morphlines.conf就直接写入值morphlines.conf&quot;--&gt;</div><div class="line">   &lt;param name=&quot;morphlineFile&quot; value=&quot;morphlines.conf&quot;/&gt;</div><div class="line">      &lt;!-- The optional morphlineId identifies a morphline if there are multiple morphlines in morphlines.conf --&gt;</div><div class="line">   &lt;param name=&quot;morphlineId&quot; value=&quot;basic_data_user_info_Map&quot;/&gt;</div><div class="line">&lt;/indexer&gt;</div></pre></td></tr></table></figure>
+<p>(3) 同步morphline-hbase-mapper.xml配置文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">hbase-indexer add-indexer \</div><div class="line"> --name cloudIndexer \</div><div class="line"> --indexer-conf \</div><div class="line">~/weixingxin/solr_config/morphline-hbase-mapper.xml \</div><div class="line"> --connection-param solr.zk=hadoops15:2181/solr \</div><div class="line"> --connection-param solr.collection=basic_data_user_info \</div><div class="line"> --zookeeper hadoops15:2181</div></pre></td></tr></table></figure>
+<p>查看更多命令参数：hbase-indexer add-indexer –help</p>
+<hr>
+<p>到此lily index 的配置完成，下一篇导入数据，测试索引。。。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/22/lily-hbase-index/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-zd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/27/zd/">得病的日子</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/27/zd/" class="archive-article-date">
+  	<time datetime="2017-04-27T05:20:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录一下自己的得病的经历，永远记住那些帮助过我的人，和为了我操劳奔波的家人。</p>
+<h2 id="2016-10-20"><a href="#2016-10-20" class="headerlink" title="2016-10-20"></a>2016-10-20</h2><p>   小腿出现星星点点的小血点，不疼不痒，只是略微感觉小腿有一些酸痛。三天后(2017-10-23) ，去了离家比较近的361航空医院，挂了皮肤科主任专家(刘永生)的号，检查了凝血三项，过敏源，尿常规。确诊我是过敏性紫癜，血小板正常，肾脏正常。他给我开了扑尔敏(抗过敏药物)，其他的什么都没有嘱咐，就让我直接走了。我看完病后就直接去上班了，完全没当回事儿，只是过敏而已，慢慢就好了，顶多就是腿上难看点儿。然而随后三天，腿上的小血点越来越多，我老婆就不放心了，于是在好大夫上花钱问了好多专家，都建议让看看中医，说西医看这病没有特效药。</p>
+<h2 id="2016-10-25"><a href="#2016-10-25" class="headerlink" title="2016-10-25"></a>2016-10-25</h2><p>   实在拧不过她，于是请了一天假，起了大早(5点)就出发，开车到了西苑中医院。7点开始挂号，她不敢让我多走动，于是自己在那儿5点半开始排队，站了1个半小时，挂上了号。</p>
+<p>   这次是一个女大夫，叫徐述。她给我号脉，说是由于脾胃虚弱，又加上感冒劳累。引起了这个病。这次没有给我开汤药，只是给开了他们医院秘制的中成药，让我每天喝几袋。最好可以休息两周，调理一下。</p>
+<p>   本来不想休息的，但早上排队的时候遇到了一个大姐，她是血小板性的过敏性紫癜，当时看的西医，吃了很多激素，直接成了股骨头坏死。和我讲这个病会引起肾炎，胃肠道出血，最严重的会尿毒症。发病期动的越多起的越多。说实话我就有点儿害怕了，想了想还是保命要紧，于是乎到公司和领导申请了两周假期。</p>
+<h2 id="2016-11-12"><a href="#2016-11-12" class="headerlink" title="2016-11-12"></a>2016-11-12</h2><p>  今天最好的哥们儿结婚，昨天下午开车两个小时到了固安，因为要当伴郎，基本上一晚上都没睡觉，早上5点多就开始忙活了起来。到了上午11点，感觉自己大腿小腿非常的酸痛，不经意间发现，手上也出现了很多小血点。当时的第一感觉就是完蛋了，这次麻烦大了。但人家大喜的日子，说这个让人家担心。忍着参加完婚礼，开车把同学们一个个送回了家，然后才回了丈母娘家。脱了裤子看了一眼，惨不忍睹。知道这次闯了大祸。</p>
+<h2 id="2017-01-01"><a href="#2017-01-01" class="headerlink" title="2017-01-01"></a>2017-01-01</h2><p>再有二十多天就要过年了，这一个多月天天在家里吃妈妈做的饭，天天除了睡觉就是睡觉，活动范围就是卧室，客厅，厕所。剩下的那儿都去不了。非常感觉姐姐，每次看病都接送我，帮我拿药带我看病。病情稍微有了一些缓解，出血点少了一点点，但依然不敢多走动。过几天就要上班了，打算天天打车上下班，确实感觉好奢侈但又没有办法。奥，对了，我还换了大夫，现在是一个很有经验的老中医，叫王彦斌，老头非常非常的nice，等看好了我，我给他送一面大锦旗。</p>
+<h2 id="2017-04-27"><a href="#2017-04-27" class="headerlink" title="2017-04-27"></a>2017-04-27</h2><p>还有整一个月就要结婚了，病还是没有好彻底，依然天天打车上下班。好消息是比以前好了许多，现在不会坐的时间长，臀部都有出血点了，大腿上的也少了许多。可心里依然很担心，害怕结婚的时候折腾两天又严重了。希望老天保佑，一定让我顺顺利利的把媳妇娶回家。</p>
+<h2 id="xxxx-xx-xx"><a href="#xxxx-xx-xx" class="headerlink" title="xxxx-xx-xx"></a>xxxx-xx-xx</h2><p>等哪天好了，我再来补充一个结尾，希望这个日子早点儿来临、</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">live</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/27/zd/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-bigdata" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/bigdata/">技术框架介绍(大数据篇)</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/23/bigdata/" class="archive-article-date">
+  	<time datetime="2017-04-23T02:03:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是我第一篇博客文章，千里之行始于脚下，希望自己养成良好的习惯，记录下工作生活中的点点滴滴。每天进步一点，积少成多，沉淀升华。 整理了一下从业需要的了解的相关技术，想慢慢的一点点细化这些架构，组合运用，可以做出一些好玩的东西出来。</p>
+<h2 id="hadoop"><a href="#hadoop" class="headerlink" title="hadoop"></a>hadoop</h2><p>hadoop 是一个开发和运行大规模数据的软件平台，属于appach组织，是一个开源项目，主要由java编写实现。核心架构包含hdfs(分布式存储)与mapreduce(分布式计算)组成。目前最新版本为3.0.0。它最早设计用于搜索引擎，为搜索存储海量数据，并进行索引建立。</p>
+<p>More info: <a href="http://hadoop.apache.org/" target="_blank" rel="external">官网</a></p>
+<h3 id="hdfs"><a href="#hdfs" class="headerlink" title="hdfs"></a>hdfs</h3><p>hdfs是一个分布式存储系统，源自于Google的GFS论文，简单理解为google实现的克隆版。它是一个高度容错的系统，能检测和应对硬件故障，用于在低成本的通用硬件上运行。</p>
+<p><img src="http://img.blog.csdn.net/20140222161019968?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd29zaGl3YW54aW4xMDIyMTM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Alt text"><br>Client：切分文件；访问HDFS；与NameNode交互，获取文件位置信息；与DataNode交互，读取和写入数据。</p>
+<p>NameNode：Master节点，在hadoop1.X中只有一个，管理HDFS的名称空间和数据块映射信息，配置副本策略，处理客户端请求。</p>
+<p>DataNode：Slave节点，存储实际的数据，汇报存储信息给NameNode。</p>
+<p>Secondary NameNode：辅助NameNode，分担其工作量；定期合并fsimage和fsedits，推<br>送给NameNode；紧急情况下，可辅助恢复NameNode，但Secondary NameNode并非NameNode的热备</p>
+<h3 id="mapreduce"><a href="#mapreduce" class="headerlink" title="mapreduce"></a>mapreduce</h3><p>源自于google的MapReduce论文，Hadoop MapReduce是google MapReduce 克隆版。是一个分布式计算框架，mapreduce 实现了算法迁移，写好的程序会被分配到各个datanode节点执行。mapreduce会频繁的读写本地文件，进行排序，归类。</p>
+<p><img src="http://img.blog.csdn.net/20140222162536546?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd29zaGl3YW54aW4xMDIyMTM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Alt text"></p>
+<p>input: 要读取的文件列表，获取文件大小位置信息</p>
+<p>splitting: 对文件进行切割,分片到各个节点</p>
+<p>mapping: 详细的读取逻辑，组合成 k-v 形式，存储文件</p>
+<p>shuffing:  根据key合并结果集，将数据分发到不同的reduce</p>
+<p>reducing: 合并后结果，具体的处理逻辑实现</p>
+<p>final result: 输出计算结果</p>
+<h2 id="hive"><a href="#hive" class="headerlink" title="hive"></a>hive</h2><p>由facebook开源，解决了海量数据结构化查询的问题。运行在mapredece之上，记性了sql化的封装。适用于离线数据的计算，隔离了mapreduce编写，大大提升了效率。</p>
+<p><img src="http://img.blog.csdn.net/20140222161841875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd29zaGl3YW54aW4xMDIyMTM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Alt text"></p>
+<p>More info: <a href="http://hive.apache.org/" target="_blank" rel="external">官网</a></p>
+<h2 id="zookeeper"><a href="#zookeeper" class="headerlink" title="zookeeper"></a>zookeeper</h2><p>源自Google的Chubby论文,是Hadoop和Hbase的重要组件。提供的功能包括：配置维护、域名服务、分布式同步、组服务等。可以理解为分布式的监听模式实现。</p>
+<p>More info: <a href="http://zookeeper.apache.org/" target="_blank" rel="external">官网</a></p>
+<h2 id="spark"><a href="#spark" class="headerlink" title="spark"></a>spark</h2><p>spark 为迭代式数据处理提供更好的支持。每次迭代的数据可以保存在内存中，而不是写入文件.相对于mapreduce框架，频繁的将文件读写到磁盘，性能上有极大的提升。而且spark提供了一套完整的解决方案，包括spark sql (交互封装),spark streaming (流式计算),MLlib(机器学习), GraphX(图计算)等一套完整方案 。它将动作封装成了一个个RDD，分为转化和动作两类。</p>
+<p>More info: <a href="http://spark.apache.org/" target="_blank" rel="external">官网</a></p>
+<h2 id="oozie"><a href="#oozie" class="headerlink" title="oozie"></a>oozie</h2><p>是一个工作流框架，可以将mapreduce任务，hive任务，shell脚本，数据库访问。。。。,根据业务封装成工作流。工作流必须标记start,end节点，可以通过kill节点杀死任务，也可以通过fork&amp;join节点并行的执行任务。同时提供web端的任务流查询，是一个非常优秀的一个框架。</p>
+<p>More info: <a href="http://oozie.apache.org/" target="_blank" rel="external">官网</a></p>
+<h2 id="hbase"><a href="#hbase" class="headerlink" title="hbase"></a>hbase</h2><p>源自Google的Bigtable论文,由facebook开源,是一个键值对数据库，具有可伸缩，过性能，分布式的特点。可以对大规模数据进行随机访问，实时读写，是一个横向无限大的表。</p>
+<p><img src="http://www.bitstech.net/wp-content/uploads/2015/09/hbase.jpg?_=5571193" alt="Alt text"></p>
+<p>More info: <a href="http://hbase.apache.org/" target="_blank" rel="external">官网</a></p>
+<h2 id="mahout"><a href="#mahout" class="headerlink" title="mahout"></a>mahout</h2><p>Mahout 是一个很强大的数据挖掘工具，是一个分布式机器学习算法的集合，包括：被称为Taste的分布式协同过滤的实现、分类、聚类等。Mahout最大的优点就是基于hadoop实现，把很多以前运行于单机上的算法，转化为了MapReduce模式，这样大大提升了算法可处理的数据量和处理性能。</p>
+<p>More info: <a href="http://mahout.apache.org/" target="_blank" rel="external">官网</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/23/bigdata/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+  
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 nick
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true,
+		showTags: false
+	}
+</script>
+
+<script>!function(t){function n(r){if(e[r])return e[r].exports;var o=e[r]={exports:{},id:r,loaded:!1};return t[r].call(o.exports,o,o.exports,n),o.loaded=!0,o.exports}var e={};return n.m=t,n.c=e,n.p="./",n(0)}([function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}function o(t,n){var e=/\/|index.html/g;return t.replace(e,"")===n.replace(e,"")}function i(){for(var t=document.querySelectorAll(".js-header-menu li a"),n=window.location.pathname,e=0,r=t.length;e<r;e++){var i=t[e];o(n,i.getAttribute("href"))&&(0,d.default)(i,"active")}}function u(t){for(var n=t.offsetLeft,e=t.offsetParent;null!==e;)n+=e.offsetLeft,e=e.offsetParent;return n}function f(t){for(var n=t.offsetTop,e=t.offsetParent;null!==e;)n+=e.offsetTop,e=e.offsetParent;return n}function c(t,n,e,r,o){var i=u(t),c=f(t)-n;if(c-e<=o){var a=t.$newDom;a||(a=t.cloneNode(!0),(0,h.default)(t,a),t.$newDom=a,a.style.position="fixed",a.style.top=(e||c)+"px",a.style.left=i+"px",a.style.zIndex=r||2,a.style.width="100%",a.style.color="#fff"),a.style.visibility="visible",t.style.visibility="hidden"}else{t.style.visibility="visible";var s=t.$newDom;s&&(s.style.visibility="hidden")}}function a(){var t=document.querySelector(".js-overlay"),n=document.querySelector(".js-header-menu");c(t,document.body.scrollTop,-63,2,0),c(n,document.body.scrollTop,1,3,0)}function s(){document.querySelector("#container").addEventListener("scroll",function(t){a()}),window.addEventListener("scroll",function(t){a()}),a()}function l(){x.default.versions.mobile&&window.screen.width<800&&(i(),s())}var p=e(71),d=r(p),v=e(72),y=(r(v),e(84)),h=r(y),b=e(69),x=r(b),g=e(75),m=r(g),w=e(70);l(),(0,w.addLoadEvent)(function(){m.default.init()}),t.exports={}},function(t,n){var e=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=e)},function(t,n){var e={}.hasOwnProperty;t.exports=function(t,n){return e.call(t,n)}},function(t,n,e){var r=e(49),o=e(15);t.exports=function(t){return r(o(t))}},function(t,n,e){t.exports=!e(8)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n,e){var r=e(6),o=e(12);t.exports=e(4)?function(t,n,e){return r.f(t,n,o(1,e))}:function(t,n,e){return t[n]=e,t}},function(t,n,e){var r=e(10),o=e(30),i=e(24),u=Object.defineProperty;n.f=e(4)?Object.defineProperty:function(t,n,e){if(r(t),n=i(n,!0),r(e),o)try{return u(t,n,e)}catch(t){}if("get"in e||"set"in e)throw TypeError("Accessors not supported!");return"value"in e&&(t[n]=e.value),t}},function(t,n,e){var r=e(22)("wks"),o=e(13),i=e(1).Symbol,u="function"==typeof i,f=t.exports=function(t){return r[t]||(r[t]=u&&i[t]||(u?i:o)("Symbol."+t))};f.store=r},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n,e){var r=e(35),o=e(16);t.exports=Object.keys||function(t){return r(t,o)}},function(t,n,e){var r=e(11);t.exports=function(t){if(!r(t))throw TypeError(t+" is not an object!");return t}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n){var e=0,r=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++e+r).toString(36))}},function(t,n){var e=t.exports={version:"2.4.0"};"number"==typeof __e&&(__e=e)},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n){t.exports={}},function(t,n){t.exports=!0},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,e){var r=e(6).f,o=e(2),i=e(7)("toStringTag");t.exports=function(t,n,e){t&&!o(t=e?t:t.prototype,i)&&r(t,i,{configurable:!0,value:n})}},function(t,n,e){var r=e(22)("keys"),o=e(13);t.exports=function(t){return r[t]||(r[t]=o(t))}},function(t,n,e){var r=e(1),o="__core-js_shared__",i=r[o]||(r[o]={});t.exports=function(t){return i[t]||(i[t]={})}},function(t,n){var e=Math.ceil,r=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?r:e)(t)}},function(t,n,e){var r=e(11);t.exports=function(t,n){if(!r(t))return t;var e,o;if(n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;if("function"==typeof(e=t.valueOf)&&!r(o=e.call(t)))return o;if(!n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;throw TypeError("Can't convert object to primitive value")}},function(t,n,e){var r=e(1),o=e(14),i=e(18),u=e(26),f=e(6).f;t.exports=function(t){var n=o.Symbol||(o.Symbol=i?{}:r.Symbol||{});"_"==t.charAt(0)||t in n||f(n,t,{value:u.f(t)})}},function(t,n,e){n.f=e(7)},function(t,n,e){var r=e(1),o=e(14),i=e(46),u=e(5),f="prototype",c=function(t,n,e){var a,s,l,p=t&c.F,d=t&c.G,v=t&c.S,y=t&c.P,h=t&c.B,b=t&c.W,x=d?o:o[n]||(o[n]={}),g=x[f],m=d?r:v?r[n]:(r[n]||{})[f];d&&(e=n);for(a in e)s=!p&&m&&void 0!==m[a],s&&a in x||(l=s?m[a]:e[a],x[a]=d&&"function"!=typeof m[a]?e[a]:h&&s?i(l,r):b&&m[a]==l?function(t){var n=function(n,e,r){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(n);case 2:return new t(n,e)}return new t(n,e,r)}return t.apply(this,arguments)};return n[f]=t[f],n}(l):y&&"function"==typeof l?i(Function.call,l):l,y&&((x.virtual||(x.virtual={}))[a]=l,t&c.R&&g&&!g[a]&&u(g,a,l)))};c.F=1,c.G=2,c.S=4,c.P=8,c.B=16,c.W=32,c.U=64,c.R=128,t.exports=c},function(t,n){var e={}.toString;t.exports=function(t){return e.call(t).slice(8,-1)}},function(t,n,e){var r=e(11),o=e(1).document,i=r(o)&&r(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},function(t,n,e){t.exports=!e(4)&&!e(8)(function(){return 7!=Object.defineProperty(e(29)("div"),"a",{get:function(){return 7}}).a})},function(t,n,e){"use strict";var r=e(18),o=e(27),i=e(36),u=e(5),f=e(2),c=e(17),a=e(51),s=e(20),l=e(58),p=e(7)("iterator"),d=!([].keys&&"next"in[].keys()),v="@@iterator",y="keys",h="values",b=function(){return this};t.exports=function(t,n,e,x,g,m,w){a(e,n,x);var O,S,_,j=function(t){if(!d&&t in A)return A[t];switch(t){case y:return function(){return new e(this,t)};case h:return function(){return new e(this,t)}}return function(){return new e(this,t)}},P=n+" Iterator",E=g==h,M=!1,A=t.prototype,T=A[p]||A[v]||g&&A[g],L=T||j(g),N=g?E?j("entries"):L:void 0,C="Array"==n?A.entries||T:T;if(C&&(_=l(C.call(new t)),_!==Object.prototype&&(s(_,P,!0),r||f(_,p)||u(_,p,b))),E&&T&&T.name!==h&&(M=!0,L=function(){return T.call(this)}),r&&!w||!d&&!M&&A[p]||u(A,p,L),c[n]=L,c[P]=b,g)if(O={values:E?L:j(h),keys:m?L:j(y),entries:N},w)for(S in O)S in A||i(A,S,O[S]);else o(o.P+o.F*(d||M),n,O);return O}},function(t,n,e){var r=e(10),o=e(55),i=e(16),u=e(21)("IE_PROTO"),f=function(){},c="prototype",a=function(){var t,n=e(29)("iframe"),r=i.length,o="<",u=">";for(n.style.display="none",e(48).appendChild(n),n.src="javascript:",t=n.contentWindow.document,t.open(),t.write(o+"script"+u+"document.F=Object"+o+"/script"+u),t.close(),a=t.F;r--;)delete a[c][i[r]];return a()};t.exports=Object.create||function(t,n){var e;return null!==t?(f[c]=r(t),e=new f,f[c]=null,e[u]=t):e=a(),void 0===n?e:o(e,n)}},function(t,n,e){var r=e(35),o=e(16).concat("length","prototype");n.f=Object.getOwnPropertyNames||function(t){return r(t,o)}},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n,e){var r=e(2),o=e(3),i=e(45)(!1),u=e(21)("IE_PROTO");t.exports=function(t,n){var e,f=o(t),c=0,a=[];for(e in f)e!=u&&r(f,e)&&a.push(e);for(;n.length>c;)r(f,e=n[c++])&&(~i(a,e)||a.push(e));return a}},function(t,n,e){t.exports=e(5)},function(t,n,e){var r=e(15);t.exports=function(t){return Object(r(t))}},function(t,n,e){t.exports={default:e(41),__esModule:!0}},function(t,n,e){t.exports={default:e(42),__esModule:!0}},function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}n.__esModule=!0;var o=e(39),i=r(o),u=e(38),f=r(u),c="function"==typeof f.default&&"symbol"==typeof i.default?function(t){return typeof t}:function(t){return t&&"function"==typeof f.default&&t.constructor===f.default&&t!==f.default.prototype?"symbol":typeof t};n.default="function"==typeof f.default&&"symbol"===c(i.default)?function(t){return"undefined"==typeof t?"undefined":c(t)}:function(t){return t&&"function"==typeof f.default&&t.constructor===f.default&&t!==f.default.prototype?"symbol":"undefined"==typeof t?"undefined":c(t)}},function(t,n,e){e(65),e(63),e(66),e(67),t.exports=e(14).Symbol},function(t,n,e){e(64),e(68),t.exports=e(26).f("iterator")},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){t.exports=function(){}},function(t,n,e){var r=e(3),o=e(61),i=e(60);t.exports=function(t){return function(n,e,u){var f,c=r(n),a=o(c.length),s=i(u,a);if(t&&e!=e){for(;a>s;)if(f=c[s++],f!=f)return!0}else for(;a>s;s++)if((t||s in c)&&c[s]===e)return t||s||0;return!t&&-1}}},function(t,n,e){var r=e(43);t.exports=function(t,n,e){if(r(t),void 0===n)return t;switch(e){case 1:return function(e){return t.call(n,e)};case 2:return function(e,r){return t.call(n,e,r)};case 3:return function(e,r,o){return t.call(n,e,r,o)}}return function(){return t.apply(n,arguments)}}},function(t,n,e){var r=e(9),o=e(34),i=e(19);t.exports=function(t){var n=r(t),e=o.f;if(e)for(var u,f=e(t),c=i.f,a=0;f.length>a;)c.call(t,u=f[a++])&&n.push(u);return n}},function(t,n,e){t.exports=e(1).document&&document.documentElement},function(t,n,e){var r=e(28);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==r(t)?t.split(""):Object(t)}},function(t,n,e){var r=e(28);t.exports=Array.isArray||function(t){return"Array"==r(t)}},function(t,n,e){"use strict";var r=e(32),o=e(12),i=e(20),u={};e(5)(u,e(7)("iterator"),function(){return this}),t.exports=function(t,n,e){t.prototype=r(u,{next:o(1,e)}),i(t,n+" Iterator")}},function(t,n){t.exports=function(t,n){return{value:n,done:!!t}}},function(t,n,e){var r=e(9),o=e(3);t.exports=function(t,n){for(var e,i=o(t),u=r(i),f=u.length,c=0;f>c;)if(i[e=u[c++]]===n)return e}},function(t,n,e){var r=e(13)("meta"),o=e(11),i=e(2),u=e(6).f,f=0,c=Object.isExtensible||function(){return!0},a=!e(8)(function(){return c(Object.preventExtensions({}))}),s=function(t){u(t,r,{value:{i:"O"+ ++f,w:{}}})},l=function(t,n){if(!o(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!i(t,r)){if(!c(t))return"F";if(!n)return"E";s(t)}return t[r].i},p=function(t,n){if(!i(t,r)){if(!c(t))return!0;if(!n)return!1;s(t)}return t[r].w},d=function(t){return a&&v.NEED&&c(t)&&!i(t,r)&&s(t),t},v=t.exports={KEY:r,NEED:!1,fastKey:l,getWeak:p,onFreeze:d}},function(t,n,e){var r=e(6),o=e(10),i=e(9);t.exports=e(4)?Object.defineProperties:function(t,n){o(t);for(var e,u=i(n),f=u.length,c=0;f>c;)r.f(t,e=u[c++],n[e]);return t}},function(t,n,e){var r=e(19),o=e(12),i=e(3),u=e(24),f=e(2),c=e(30),a=Object.getOwnPropertyDescriptor;n.f=e(4)?a:function(t,n){if(t=i(t),n=u(n,!0),c)try{return a(t,n)}catch(t){}if(f(t,n))return o(!r.f.call(t,n),t[n])}},function(t,n,e){var r=e(3),o=e(33).f,i={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],f=function(t){try{return o(t)}catch(t){return u.slice()}};t.exports.f=function(t){return u&&"[object Window]"==i.call(t)?f(t):o(r(t))}},function(t,n,e){var r=e(2),o=e(37),i=e(21)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=o(t),r(t,i)?t[i]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,n,e){var r=e(23),o=e(15);t.exports=function(t){return function(n,e){var i,u,f=String(o(n)),c=r(e),a=f.length;return c<0||c>=a?t?"":void 0:(i=f.charCodeAt(c),i<55296||i>56319||c+1===a||(u=f.charCodeAt(c+1))<56320||u>57343?t?f.charAt(c):i:t?f.slice(c,c+2):(i-55296<<10)+(u-56320)+65536)}}},function(t,n,e){var r=e(23),o=Math.max,i=Math.min;t.exports=function(t,n){return t=r(t),t<0?o(t+n,0):i(t,n)}},function(t,n,e){var r=e(23),o=Math.min;t.exports=function(t){return t>0?o(r(t),9007199254740991):0}},function(t,n,e){"use strict";var r=e(44),o=e(52),i=e(17),u=e(3);t.exports=e(31)(Array,"Array",function(t,n){this._t=u(t),this._i=0,this._k=n},function(){var t=this._t,n=this._k,e=this._i++;return!t||e>=t.length?(this._t=void 0,o(1)):"keys"==n?o(0,e):"values"==n?o(0,t[e]):o(0,[e,t[e]])},"values"),i.Arguments=i.Array,r("keys"),r("values"),r("entries")},function(t,n){},function(t,n,e){"use strict";var r=e(59)(!0);e(31)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,n=this._t,e=this._i;return e>=n.length?{value:void 0,done:!0}:(t=r(n,e),this._i+=t.length,{value:t,done:!1})})},function(t,n,e){"use strict";var r=e(1),o=e(2),i=e(4),u=e(27),f=e(36),c=e(54).KEY,a=e(8),s=e(22),l=e(20),p=e(13),d=e(7),v=e(26),y=e(25),h=e(53),b=e(47),x=e(50),g=e(10),m=e(3),w=e(24),O=e(12),S=e(32),_=e(57),j=e(56),P=e(6),E=e(9),M=j.f,A=P.f,T=_.f,L=r.Symbol,N=r.JSON,C=N&&N.stringify,k="prototype",F=d("_hidden"),q=d("toPrimitive"),I={}.propertyIsEnumerable,B=s("symbol-registry"),D=s("symbols"),W=s("op-symbols"),H=Object[k],K="function"==typeof L,R=r.QObject,J=!R||!R[k]||!R[k].findChild,U=i&&a(function(){return 7!=S(A({},"a",{get:function(){return A(this,"a",{value:7}).a}})).a})?function(t,n,e){var r=M(H,n);r&&delete H[n],A(t,n,e),r&&t!==H&&A(H,n,r)}:A,G=function(t){var n=D[t]=S(L[k]);return n._k=t,n},$=K&&"symbol"==typeof L.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof L},z=function(t,n,e){return t===H&&z(W,n,e),g(t),n=w(n,!0),g(e),o(D,n)?(e.enumerable?(o(t,F)&&t[F][n]&&(t[F][n]=!1),e=S(e,{enumerable:O(0,!1)})):(o(t,F)||A(t,F,O(1,{})),t[F][n]=!0),U(t,n,e)):A(t,n,e)},Y=function(t,n){g(t);for(var e,r=b(n=m(n)),o=0,i=r.length;i>o;)z(t,e=r[o++],n[e]);return t},Q=function(t,n){return void 0===n?S(t):Y(S(t),n)},X=function(t){var n=I.call(this,t=w(t,!0));return!(this===H&&o(D,t)&&!o(W,t))&&(!(n||!o(this,t)||!o(D,t)||o(this,F)&&this[F][t])||n)},V=function(t,n){if(t=m(t),n=w(n,!0),t!==H||!o(D,n)||o(W,n)){var e=M(t,n);return!e||!o(D,n)||o(t,F)&&t[F][n]||(e.enumerable=!0),e}},Z=function(t){for(var n,e=T(m(t)),r=[],i=0;e.length>i;)o(D,n=e[i++])||n==F||n==c||r.push(n);return r},tt=function(t){for(var n,e=t===H,r=T(e?W:m(t)),i=[],u=0;r.length>u;)!o(D,n=r[u++])||e&&!o(H,n)||i.push(D[n]);return i};K||(L=function(){if(this instanceof L)throw TypeError("Symbol is not a constructor!");var t=p(arguments.length>0?arguments[0]:void 0),n=function(e){this===H&&n.call(W,e),o(this,F)&&o(this[F],t)&&(this[F][t]=!1),U(this,t,O(1,e))};return i&&J&&U(H,t,{configurable:!0,set:n}),G(t)},f(L[k],"toString",function(){return this._k}),j.f=V,P.f=z,e(33).f=_.f=Z,e(19).f=X,e(34).f=tt,i&&!e(18)&&f(H,"propertyIsEnumerable",X,!0),v.f=function(t){return G(d(t))}),u(u.G+u.W+u.F*!K,{Symbol:L});for(var nt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),et=0;nt.length>et;)d(nt[et++]);for(var nt=E(d.store),et=0;nt.length>et;)y(nt[et++]);u(u.S+u.F*!K,"Symbol",{for:function(t){return o(B,t+="")?B[t]:B[t]=L(t)},keyFor:function(t){if($(t))return h(B,t);throw TypeError(t+" is not a symbol!")},useSetter:function(){J=!0},useSimple:function(){J=!1}}),u(u.S+u.F*!K,"Object",{create:Q,defineProperty:z,defineProperties:Y,getOwnPropertyDescriptor:V,getOwnPropertyNames:Z,getOwnPropertySymbols:tt}),N&&u(u.S+u.F*(!K||a(function(){var t=L();return"[null]"!=C([t])||"{}"!=C({a:t})||"{}"!=C(Object(t))})),"JSON",{stringify:function(t){if(void 0!==t&&!$(t)){for(var n,e,r=[t],o=1;arguments.length>o;)r.push(arguments[o++]);return n=r[1],"function"==typeof n&&(e=n),!e&&x(n)||(n=function(t,n){if(e&&(n=e.call(this,t,n)),!$(n))return n}),r[1]=n,C.apply(N,r)}}}),L[k][q]||e(5)(L[k],q,L[k].valueOf),l(L,"Symbol"),l(Math,"Math",!0),l(r.JSON,"JSON",!0)},function(t,n,e){e(25)("asyncIterator")},function(t,n,e){e(25)("observable")},function(t,n,e){e(62);for(var r=e(1),o=e(5),i=e(17),u=e(7)("toStringTag"),f=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],c=0;c<5;c++){var a=f[c],s=r[a],l=s&&s.prototype;l&&!l[u]&&o(l,u,a),i[a]=i.Array}},function(t,n){"use strict";var e={versions:function(){var t=window.navigator.userAgent;return{trident:t.indexOf("Trident")>-1,presto:t.indexOf("Presto")>-1,webKit:t.indexOf("AppleWebKit")>-1,gecko:t.indexOf("Gecko")>-1&&t.indexOf("KHTML")==-1,mobile:!!t.match(/AppleWebKit.*Mobile.*/),ios:!!t.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),android:t.indexOf("Android")>-1||t.indexOf("Linux")>-1,iPhone:t.indexOf("iPhone")>-1||t.indexOf("Mac")>-1,iPad:t.indexOf("iPad")>-1,webApp:t.indexOf("Safari")==-1,weixin:t.indexOf("MicroMessenger")==-1}}()};t.exports=e},function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}var o=e(40),i=r(o),u=function(){function t(t,n,e){return n||e?String.fromCharCode(n||e):o[t]||t}function n(t){return l[t]}var e=/&quot;|&lt;|&gt;|&amp;|&nbsp;|&apos;|&#(\d+);|&#(\d+)/g,r=/['<> "&]/g,o={"&quot;":'"',"&lt;":"<","&gt;":">","&amp;":"&","&nbsp;":" "},f=/\u00a0/g,c=/<br\s*\/?>/gi,a=/\r?\n/g,s=/\s/g,l={};for(var p in o)l[o[p]]=p;return o["&apos;"]="'",l["'"]="&#39;",{encode:function(t){return t?(""+t).replace(r,n).replace(a,"<br/>").replace(s,"&nbsp;"):""},decode:function(n){return n?(""+n).replace(c,"\n").replace(e,t).replace(f," "):""},encodeBase16:function(t){if(!t)return t;t+="";for(var n=[],e=0,r=t.length;r>e;e++)n.push(t.charCodeAt(e).toString(16).toUpperCase());return n.join("")},encodeBase16forJSON:function(t){if(!t)return t;t=t.replace(/[\u4E00-\u9FBF]/gi,function(t){return escape(t).replace("%u","\\u")});for(var n=[],e=0,r=t.length;r>e;e++)n.push(t.charCodeAt(e).toString(16).toUpperCase());return n.join("")},decodeBase16:function(t){if(!t)return t;t+="";for(var n=[],e=0,r=t.length;r>e;e+=2)n.push(String.fromCharCode("0x"+t.slice(e,e+2)));return n.join("")},encodeObject:function(t){if(t instanceof Array)for(var n=0,e=t.length;e>n;n++)t[n]=u.encodeObject(t[n]);else if("object"==("undefined"==typeof t?"undefined":(0,i.default)(t)))for(var r in t)t[r]=u.encodeObject(t[r]);else if("string"==typeof t)return u.encode(t);return t},loadScript:function(t){var n=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(n),n.setAttribute("src",t)},addLoadEvent:function(t){var n=window.onload;"function"!=typeof window.onload?window.onload=t:window.onload=function(){n(),t()}}}}();t.exports=u},function(t,n){function e(t,n){t.classList?t.classList.add(n):t.className+=" "+n}t.exports=e},function(t,n){function e(t,n){if(t.classList)t.classList.remove(n);else{var e=new RegExp("(^|\\b)"+n.split(" ").join("|")+"(\\b|$)","gi");t.className=t.className.replace(e," ")}}t.exports=e},,,function(t,n){"use strict";function e(){var t=document.querySelector("#page-nav");if(t&&!document.querySelector("#page-nav .extend.prev")&&(t.innerHTML='<a class="extend prev disabled" rel="prev">&laquo; Prev</a>'+t.innerHTML),t&&!document.querySelector("#page-nav .extend.next")&&(t.innerHTML=t.innerHTML+'<a class="extend next disabled" rel="next">Next &raquo;</a>'),yiliaConfig&&yiliaConfig.open_in_new){var n=document.querySelectorAll(".article-entry a:not(.article-more-a)");n.forEach(function(t){var n=t.getAttribute("target");n&&""!==n||t.setAttribute("target","_blank")})}var e=document.querySelector("#js-aboutme");e&&0!==e.length&&(e.innerHTML=e.innerText)}t.exports={init:e}},,,,,,,,,function(t,n){function e(t,n){if("string"==typeof n)return t.insertAdjacentHTML("afterend",n);var e=t.nextSibling;return e?t.parentNode.insertBefore(n,e):t.parentNode.appendChild(n)}t.exports=e}])</script><script src="/./main.f6a68c.js"></script><script>!function(){var e=function(e){var t=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(t),t.setAttribute("src",e)};e("/slider.885efe.js")}()</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-nav header-menu">
+    
+    
+      
+      
+      
+    
+      
+      
+      
+    
+      
+      
+      
+    
+    
+
+    <ul style="width: 70%">
+    
+    
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      
+        
+    </ul>
+  </div>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">frame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">live</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            3、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: false
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://www.zwting.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>大超哥</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://lankors.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>莹莹同学</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://www.heyyezi.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>强哥</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://yx5198.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>阿兴</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://baiyibing123.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>乙兵</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://mingmings.org/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>明明</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://successfuljian.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>小建建</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://obeyconquer.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>高阳</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://taoyak.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>亚可</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://dolinks.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>艺馨</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">一个小码农</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
