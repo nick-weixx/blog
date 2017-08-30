@@ -143,6 +143,7 @@ String zkStr = "localhost:2181/kafka";
 	}
 ```
 
+
 (1) spout\_login 与 spout\_logout 设置任务数为1，执行线程数为1。
 
 (2) blot\_split\_login 与 blot\_split\_logout 设置2个线程执行，每个线程执行2个任务。
