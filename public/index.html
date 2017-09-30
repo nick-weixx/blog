@@ -175,6 +175,319 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-guava-collections" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/guava-collections/">guava 新集合类型</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/22/guava-collections/" class="archive-article-date">
+  	<time datetime="2017-09-22T12:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Multiset"><a href="#Multiset" class="headerlink" title="Multiset"></a>Multiset</h2><p>Guava提供了一个新集合类型 Multiset，它可以多次添加相等的元素。</p>
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">   final String[] names = new String[] &#123; &quot;nick&quot;, &quot;davide&quot;, &quot;ken&quot;, &quot;ken&quot;, &quot;nick&quot;, &quot;nick&quot; &#125;;</div><div class="line">      System.out.println(&quot;hashmap:&quot;);</div><div class="line">	Map&lt;String, Integer&gt; hashMap = new HashMap&lt;String, Integer&gt;();</div><div class="line">	for (int i = 0; i &lt; names.length; i++) &#123;</div><div class="line">		String name = names[i];</div><div class="line">		if (hashMap.containsKey(name)) &#123;</div><div class="line">			hashMap.put(name, hashMap.get(name) + 1);</div><div class="line">		&#125; else &#123;</div><div class="line">			hashMap.put(name, 1);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	for (Map.Entry&lt;String, Integer&gt; entry : hashMap.entrySet()) &#123;</div><div class="line">		System.out.println(&quot;name: &quot; + entry.getKey() + &quot; ,count: &quot; + entry.getValue());</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	System.out.println(&quot;\n&quot; + &quot;hashmultiset:&quot;);</div><div class="line">	HashMultiset&lt;String&gt; hashMultiSet = HashMultiset.create();</div><div class="line">	for (int i = 0; i &lt; names.length; i++) &#123;</div><div class="line">		hashMultiSet.add(names[i]);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	System.out.println(hashMultiSet);</div><div class="line">	for (Multiset.Entry&lt;String&gt; name : hashMultiSet.entrySet()) &#123;</div><div class="line">		System.out.println(&quot;name: &quot; + name.getElement() + &quot; ,count: &quot; + hashMultiSet.count(name.getElement()));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>HashMap 在实现key值出现次数的统计时，必须拿到原来的值，并重新赋值会原来的集合。还需要判断当前key是否贼map中。</p>
+<p>使用 HashMultiset ,我们不需要判断key是否已经存在于集合，也不用自己做值的累加。节省了代码量并且看着非常的直观。 </p>
+<p>guava为我们提供了如下Multiset类型集合：</p>
+<table>
+<thead>
+<tr>
+<th>map类型</th>
+<th style="text-align:center">multiset实现</th>
+<th style="text-align:right">是否支持null</th>
+<th>是否线程安全</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HashMap</td>
+<td style="text-align:center">HashMultiset</td>
+<td style="text-align:right">Y</td>
+<td>N</td>
+<td>hash表map</td>
+</tr>
+<tr>
+<td>TreeMap</td>
+<td style="text-align:center">TreeMultiset</td>
+<td style="text-align:right">Y</td>
+<td>N</td>
+<td>具有排序的map</td>
+</tr>
+<tr>
+<td>LinkedHashMap</td>
+<td style="text-align:center">LinkedHashMultiset</td>
+<td style="text-align:right">Y</td>
+<td>N</td>
+<td>链表方式实现的map</td>
+</tr>
+<tr>
+<td>ConcurrentHashMap</td>
+<td style="text-align:center">ConcurrentHashMultiset</td>
+<td style="text-align:right">N</td>
+<td>Y</td>
+<td>线程安全的hash 表map</td>
+</tr>
+<tr>
+<td>ImmutableMap(guava)</td>
+<td style="text-align:center">ImmutableMultiset</td>
+<td style="text-align:right">N</td>
+<td>Y</td>
+<td>不可变集合</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Multimap"><a href="#Multimap" class="headerlink" title="Multimap"></a>Multimap</h2><p>我们经常使用Map<k, list<v="">&gt;或Map<k, set<v="">&gt;，写业务代码，这个结构非常的笨拙。guava提供了，multimap已便我们用来实现业务。</k,></k,></p>
+<p>存储的数据结构类似于：</p>
+<p>a -&gt; [1, 2, 4] b -&gt; 3 c -&gt; 5</p>
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line">     System.out.println(&quot;hashMap:&quot;);</div><div class="line">Map&lt;String, Integer&gt; hashMap = new HashMap&lt;String, Integer&gt;();</div><div class="line">hashMap.put(&quot;nick&quot;, 23);</div><div class="line">hashMap.put(&quot;nick&quot;, 22);</div><div class="line">hashMap.put(&quot;ken&quot;, 56);</div><div class="line">hashMap.put(&quot;ken&quot;, 58);</div><div class="line">hashMap.put(&quot;david&quot;, 78);</div><div class="line">hashMap.put(&quot;&quot;, 78);</div><div class="line">hashMap.put(null, 78);</div><div class="line">for (String demo : hashMap.keySet()) &#123;</div><div class="line">	System.out.println(demo + &quot;\t&quot; + hashMap.get(demo));</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">//k-set结构</div><div class="line">System.out.println(&quot;\n&quot; + &quot;hashMultimap:&quot;);</div><div class="line">HashMultimap&lt;String, Integer&gt; hashMultimap = HashMultimap.create();</div><div class="line">hashMultimap.put(&quot;nick&quot;, 23);</div><div class="line">hashMultimap.put(&quot;nick&quot;, 22);</div><div class="line">hashMultimap.put(&quot;ken&quot;, 56);</div><div class="line">hashMultimap.put(&quot;ken&quot;, 58);</div><div class="line">hashMultimap.put(&quot;david&quot;, 78);</div><div class="line">hashMultimap.put(&quot;&quot;, 78);</div><div class="line">hashMultimap.put(null, 78);</div><div class="line">for (String demo : hashMultimap.keySet()) &#123;</div><div class="line">	System.out.println(demo + &quot;\t&quot; + hashMultimap.get(demo));</div><div class="line">&#125;</div><div class="line"></div><div class="line">//k-list 结构</div><div class="line">System.out.println(&quot;\n&quot; + &quot;arrayListMultiMap:&quot;);</div><div class="line">ArrayListMultimap&lt;String, Integer&gt; arrayListMultiMap =ArrayListMultimap.create();</div><div class="line">arrayListMultiMap.put(&quot;nick&quot;, 23);</div><div class="line">arrayListMultiMap.put(&quot;nick&quot;, 22);</div><div class="line">arrayListMultiMap.put(&quot;ken&quot;, 56);</div><div class="line">arrayListMultiMap.put(&quot;ken&quot;, 58);</div><div class="line">arrayListMultiMap.put(&quot;david&quot;, 78);</div><div class="line">arrayListMultiMap.put(&quot;&quot;, 78);</div><div class="line">arrayListMultiMap.put(null, 78);</div><div class="line">for (String demo : arrayListMultiMap.keySet()) &#123;</div><div class="line">	System.out.println(demo + &quot;\t&quot; + arrayListMultiMap.get(demo));</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">  System.out.println(&quot;\n&quot; + &quot;TreeMap:&quot;);</div><div class="line">TreeMap&lt;String, Integer&gt; treeMap = new TreeMap&lt;String, Integer&gt;();</div><div class="line">treeMap.put(&quot;nick&quot;, 23);</div><div class="line">treeMap.put(&quot;nick&quot;, 22);</div><div class="line">treeMap.put(&quot;david&quot;, 56);</div><div class="line">treeMap.put(&quot;david&quot;, 58);</div><div class="line">treeMap.put(&quot;ken&quot;, 78);</div><div class="line">treeMap.put(&quot;aaa&quot;, 23);</div><div class="line">treeMap.put(&quot;leo&quot;, 34);</div><div class="line">treeMap.put(&quot;luna&quot;, 87);</div><div class="line">treeMap.put(&quot;&quot;, 78);</div><div class="line">// treeMap.put(null, 78); //key不能为null</div><div class="line">for (String demo : treeMap.keySet()) &#123;</div><div class="line">	System.out.println(demo + &quot;\t&quot; + treeMap.get(demo));</div><div class="line">&#125;</div><div class="line"></div><div class="line">System.out.println(&quot;\n&quot; + &quot;TreeMultimap:&quot;);</div><div class="line">TreeMultimap&lt;String, Integer&gt; treeMultimap = TreeMultimap.create();</div><div class="line">treeMultimap.put(&quot;nick&quot;, 23);</div><div class="line">treeMultimap.put(&quot;nick&quot;, 22);</div><div class="line">treeMultimap.put(&quot;david&quot;, 56);</div><div class="line">treeMultimap.put(&quot;david&quot;, 58);</div><div class="line">treeMultimap.put(&quot;ken&quot;, 78);</div><div class="line">treeMultimap.put(&quot;aaa&quot;, 23);</div><div class="line">treeMultimap.put(&quot;leo&quot;, 34);</div><div class="line">treeMultimap.put(&quot;luna&quot;, 87);</div><div class="line">treeMultimap.put(&quot;&quot;, 78);</div><div class="line">// treeMultimap.put(null, 78); //key不能为null</div><div class="line">for (String demo : treeMultimap.keySet()) &#123;</div><div class="line">	System.out.println(demo + &quot;\t&quot; + treeMultimap.get(demo));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们可以看出区别，HashMultimap<string, integer=""> 其实类似于，HashMap<string,set<integer>&gt;的数据结构。</string,set<integer></string,></p>
+<p>guava为我们提供了如下MultiMap类型集合：</p>
+<table>
+<thead>
+<tr>
+<th>实现</th>
+<th style="text-align:center">键行为类似</th>
+<th style="text-align:center">值行为类似</th>
+<th style="text-align:center">是否可为null</th>
+<th>是否线程安全</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ArrayListMultimap</td>
+<td style="text-align:center">HashMap</td>
+<td style="text-align:center">ArrayList</td>
+<td style="text-align:center">Y</td>
+<td>N</td>
+<td>hash表map</td>
+</tr>
+<tr>
+<td>HashMultimap</td>
+<td style="text-align:center">HashMap</td>
+<td style="text-align:center">HashSet</td>
+<td style="text-align:center">Y</td>
+<td>N</td>
+<td>hash表map</td>
+</tr>
+<tr>
+<td>LinkedListMultimap</td>
+<td style="text-align:center">LinkedHashMap</td>
+<td style="text-align:center">LinkedList</td>
+<td style="text-align:center">Y</td>
+<td>N</td>
+<td>链表方式实现的map</td>
+</tr>
+<tr>
+<td>LinkedHashMultimap</td>
+<td style="text-align:center">LinkedHashMap</td>
+<td style="text-align:center">LinkedHashMap</td>
+<td style="text-align:center">Y</td>
+<td>N</td>
+<td>链表方式实现的map</td>
+</tr>
+<tr>
+<td>TreeMultimap</td>
+<td style="text-align:center">TreeMap</td>
+<td style="text-align:center">TreeSet</td>
+<td style="text-align:center">Y</td>
+<td>N</td>
+<td>具有排序的map</td>
+</tr>
+<tr>
+<td>ImmutableListMultimap</td>
+<td style="text-align:center">ImmutableMap(guava)</td>
+<td style="text-align:center">ImmutableList</td>
+<td style="text-align:center">N</td>
+<td>Y</td>
+<td>不可变集合</td>
+</tr>
+<tr>
+<td>ImmutableSetMultimap</td>
+<td style="text-align:center">ImmutableMap(guava)</td>
+<td style="text-align:center">ImmutableSet</td>
+<td style="text-align:center">N</td>
+<td>Y</td>
+<td>不可变集合</td>
+</tr>
+</tbody>
+</table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/22/guava-collections/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-guava-cllections2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/guava-cllections2/">guava 新集合类型2</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/22/guava-cllections2/" class="archive-article-date">
+  	<time datetime="2017-09-22T12:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h2><p>Guava为此提供了新集合类型Table，它有两个支持所有类型的键：”行”和”列”。替代了类似Map<string, map<string,integer="">&gt;的实现，这种方式很丑陋,使用不友好的数据结构。</string,></p>
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">    System.out.println(&quot;java hashmap...\n&quot;);</div><div class="line">Map&lt;String, Map&lt;String, Integer&gt;&gt; t1 = new HashMap&lt;String, Map&lt;String, Integer&gt;&gt;();</div><div class="line">Map&lt;String, Integer&gt; nick = new HashMap&lt;String, Integer&gt;();</div><div class="line">nick.put(&quot;math&quot;, 100);</div><div class="line">nick.put(&quot;chinese&quot;, 99);</div><div class="line">nick.put(&quot;en&quot;, 98);</div><div class="line">nick.put(&quot;en&quot;, 100);</div><div class="line">Map&lt;String, Integer&gt; david = new HashMap&lt;String, Integer&gt;();</div><div class="line">david.put(&quot;math&quot;, 101);</div><div class="line">david.put(&quot;chinese&quot;, 102);</div><div class="line">david.put(&quot;en&quot;, 102);</div><div class="line">t1.put(&quot;nick&quot;, nick);</div><div class="line">t1.put(&quot;david&quot;, david);</div><div class="line">System.out.println(&quot;row: &quot; + t1.get(&quot;nick&quot;));</div><div class="line"></div><div class="line">System.out.println(&quot;\n guava HashBasedTable...\n&quot;);</div><div class="line">Table&lt;String, String, Integer&gt; table = HashBasedTable.create();</div><div class="line">table.put(&quot;nick&quot;, &quot;math&quot;, 100);</div><div class="line">table.put(&quot;nick&quot;, &quot;chinese&quot;, 99);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 98);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 100);</div><div class="line">table.put(&quot;david&quot;, &quot;math&quot;, 101);</div><div class="line">table.put(&quot;david&quot;, &quot;chinese&quot;, 102);</div><div class="line">table.put(&quot;david&quot;, &quot;en&quot;, 102);</div><div class="line">System.out.println(&quot;all col: &quot; + table.columnMap());</div><div class="line">System.out.println(&quot;rowkeys: &quot; + table.rowKeySet());</div><div class="line">System.out.println(&quot;vals: &quot; + table.values());</div><div class="line">System.out.println(&quot;col: &quot; + table.column(&quot;chinese&quot;));</div><div class="line">System.out.println(&quot;row: &quot; + table.row(&quot;nick&quot;));</div><div class="line">System.out.println(&quot;is contains column:[math] &quot; +  table.containsColumn(&quot;math&quot;));</div><div class="line">System.out.println(&quot;is contains row:[nick] &quot; + table.containsRow(&quot;nick&quot;));</div><div class="line"></div><div class="line">//只读表</div><div class="line">System.out.println(&quot;\n guava ImmutableTable...\n&quot;);</div><div class="line">Table&lt;String, String, Integer&gt; table = HashBasedTable.create();</div><div class="line">table.put(&quot;nick&quot;, &quot;math&quot;, 100);</div><div class="line">table.put(&quot;nick&quot;, &quot;chinese&quot;, 99);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 98);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 100);</div><div class="line">table.put(&quot;david&quot;, &quot;math&quot;, 101);</div><div class="line">table.put(&quot;david&quot;, &quot;chinese&quot;, 102);</div><div class="line">table.put(&quot;david&quot;, &quot;en&quot;, 102);</div><div class="line">ImmutableTable&lt;String, String, Integer&gt; copyImutable = ImmutableTable.copyOf(table);</div><div class="line">System.out.println(&quot;all col: &quot; + copyImutable.columnMap());</div><div class="line">System.out.println(&quot;rowkeys: &quot; + copyImutable.rowKeySet());</div><div class="line">System.out.println(&quot;vals: &quot; + copyImutable.values());</div><div class="line">System.out.println(&quot;col: &quot; + copyImutable.column(&quot;chinese&quot;));</div><div class="line">System.out.println(&quot;row: &quot; + copyImutable.row(&quot;nick&quot;));</div><div class="line">System.out.println(&quot;is contains column:[math] &quot; + copyImutable.containsColumn(&quot;math&quot;));</div><div class="line">System.out.println(&quot;is contains row:[nick] &quot; + copyImutable.containsRow(&quot;nick&quot;));</div><div class="line"></div><div class="line">//二维数组</div><div class="line">Table&lt;String, String, Integer&gt; table = HashBasedTable.create();</div><div class="line">table.put(&quot;nick&quot;, &quot;math&quot;, 100);</div><div class="line">table.put(&quot;nick&quot;, &quot;chinese&quot;, 99);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 98);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 100);</div><div class="line">table.put(&quot;david&quot;, &quot;math&quot;, 101);</div><div class="line">table.put(&quot;david&quot;, &quot;chinese&quot;, 102);</div><div class="line">table.put(&quot;david&quot;, &quot;en&quot;, 102);</div><div class="line">ArrayTable&lt;String, String, Integer&gt; arrTab = ArrayTable.create(table);</div><div class="line">System.out.println(&quot;row key: &quot; + arrTab.rowKeyList());</div><div class="line">System.out.println(&quot;column key: &quot; + arrTab.columnKeyList());</div></pre></td></tr></table></figure>
+<ul>
+<li>table.row(“nick”)： 用Map\<c, v="">返回给定”行”的所有列，对这个map进行的写操作也将写入Table中。</c,></li>
+<li><p>table.rowKeySet()：返回所有行键，Set\<r> 格式</r></p>
+</li>
+<li><p>cellSet()：用元素类型为Table.Cell\<r, c,="" v="">的Set表现Table\<r, c,="" v="">。Cell类似于Map.Entry，但它是用行和列两个键区分的</r,></r,></p>
+</li>
+</ul>
+<p>guava为我们提供了如下Multiset类型集合：</p>
+<table>
+<thead>
+<tr>
+<th>实现(TABLE)</th>
+<th style="text-align:center">是否重复值插入</th>
+<th style="text-align:right">是否支持null</th>
+<th>是否线程安全</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HashBasedTable</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:right">Y</td>
+<td>N</td>
+<td>HashMap<r, hashmap<c,="" v="">&gt;实现</r,></td>
+</tr>
+<tr>
+<td>TreeBasedTable</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:right">Y</td>
+<td>N</td>
+<td>TreeMap<r, treemap<c,v="">&gt;实现</r,></td>
+</tr>
+<tr>
+<td>ArrayTable</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:right">Y</td>
+<td>N</td>
+<td>二维数组实现，与其他TABLE工作原理不同</td>
+</tr>
+<tr>
+<td>ImmutableTable</td>
+<td style="text-align:center">N</td>
+<td style="text-align:right">N</td>
+<td>Y</td>
+<td>只读table实现,ImmutableMap<r, immutablemap<c,="" v="">&gt;</r,></td>
+</tr>
+</tbody>
+</table>
+<h2 id="RangeSet"><a href="#RangeSet" class="headerlink" title="RangeSet"></a>RangeSet</h2><p>RangeSet描述了一组不相连的、非空的区间。当把一个区间添加到可变的RangeSet时，所有相连的区间会被合并，空区间会被忽略。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">  RangeSet&lt;Integer&gt; rangeSet = TreeRangeSet.create();</div><div class="line">rangeSet.add(Range.closed(1, 10));//[[1‥10]]  1&lt;=x&lt;=10</div><div class="line">System.out.println(rangeSet);</div><div class="line">rangeSet.add(Range.closedOpen(11, 15));//[[1‥10], [11‥15)] 11&lt;=x&lt;15</div><div class="line">System.out.println(rangeSet);</div><div class="line">rangeSet.add(Range.open(15, 20));//[[1‥10], [11‥15), (15‥20)] 15&lt;x&lt;20</div><div class="line">System.out.println(rangeSet);</div><div class="line">rangeSet.add(Range.openClosed(0, 0));//[[1‥10], [11‥15), (15‥20)] 空区间 0&lt;x&lt;0</div><div class="line">System.out.println(rangeSet);</div><div class="line">rangeSet.remove(Range.open(5, 10));// [[1‥5], [10‥10], [11‥15), (15‥20)] 移除区间 5&lt;x&lt;9</div><div class="line">System.out.println(rangeSet);</div><div class="line">//互补区间</div><div class="line">System.out.println(&quot;补集: &quot;+rangeSet.complement());</div><div class="line"></div><div class="line">// 是否在区间内</div><div class="line">System.out.println(&quot;单点21是否在区间内：&quot; + rangeSet.contains(21));// false</div><div class="line">System.out.println(&quot;单点9是否在区间内：&quot; + rangeSet.contains(9));// true</div><div class="line">// 元素所在区间</div><div class="line">System.out.println(&quot;元素15所在区间：&quot; + rangeSet.rangeContaining(15));</div><div class="line">System.out.println(&quot;元素7所在区间：&quot; + rangeSet.rangeContaining(7));</div><div class="line"></div><div class="line">// 范围是否在区间内</div><div class="line">System.out.println(&quot;定义区间是否在区间内&quot; + rangeSet.encloses(Range.closedOpen(18, 20)));</div></pre></td></tr></table></figure>
+<ul>
+<li>complement()：返回RangeSet的补集视图。complement也是RangeSet类型,包含了不相连的、非空的区间。</li>
+<li>subRangeSet(Range<c>)：返回RangeSet与给定Range的交集视图。这扩展了传统排序集合中的headSet、subSet和tailSet操作。</c></li>
+<li>asRanges()：用Set<range<c>&gt;表现RangeSet，这样可以遍历其中的Range。</range<c></li>
+<li>asSet(DiscreteDomain<c>)（仅ImmutableRangeSet支持）：用ImmutableSortedSet<c>表现RangeSet，以区间中所有元素的形式而不是区间本身的形式查看。（这个操作不支持DiscreteDomain 和RangeSet都没有上边界，或都没有下边界的情况）</c></c></li>
+</ul>
+<h2 id="RangeMap"><a href="#RangeMap" class="headerlink" title="RangeMap"></a>RangeMap</h2><p>RangeMap描述了”不相交的、非空的区间”到特定值的映射。和RangeSet不同，RangeMap不会合并相邻的映射，即便相邻的区间映射到相同的值。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">RangeMap&lt;Integer, String&gt; rangeMap = TreeRangeMap.create();</div><div class="line">rangeMap.put(Range.closed(1, 10), &quot;foo&quot;); //&#123;[1,10] =&gt; &quot;foo&quot;&#125;</div><div class="line">rangeMap.put(Range.open(3, 6), &quot;bar&quot;); //&#123;[1,3] =&gt; &quot;foo&quot;, (3,6) =&gt; &quot;bar&quot;, [6,10] =&gt; &quot;foo&quot;&#125;</div><div class="line">rangeMap.put(Range.open(10, 20), &quot;foo&quot;); //&#123;[1,3] =&gt; &quot;foo&quot;, (3,6) =&gt; &quot;bar&quot;, [6,10] =&gt; &quot;foo&quot;, (10,20) =&gt; &quot;foo&quot;&#125;</div><div class="line">rangeMap.remove(Range.closed(5, 11)); //&#123;[1,3] =&gt; &quot;foo&quot;, (3,5) =&gt; &quot;bar&quot;, (11,20) =&gt; &quot;foo&quot;&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>asMapOfRanges()：用Map<range<k>, V&gt;表现RangeMap。这可以用来遍历RangeMap。</range<k></li>
+<li>subRangeMap(Range<k>)：用RangeMap类型返回RangeMap与给定Range的交集视图。这扩展了传统的headMap、subMap和tailMap操作。</k></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/22/guava-cllections2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-guava-cache" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -997,161 +1310,10 @@ false
 
 
   
-    <article id="post-zd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/zd/">得病的日子</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/27/zd/" class="archive-article-date">
-  	<time datetime="2017-04-27T05:20:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录一下自己的得病的经历，永远记住那些帮助过我的人，和为了我操劳奔波的家人。</p>
-<h2 id="2016-10-20"><a href="#2016-10-20" class="headerlink" title="2016-10-20"></a>2016-10-20</h2><p>   小腿出现星星点点的小血点，不疼不痒，只是略微感觉小腿有一些酸痛。三天后(2017-10-23) ，去了离家比较近的361航空医院，挂了皮肤科主任专家(刘永生)的号，检查了凝血三项，过敏源，尿常规。确诊我是过敏性紫癜，血小板正常，肾脏正常。他给我开了扑尔敏(抗过敏药物)，其他的什么都没有嘱咐，就让我直接走了。我看完病后就直接去上班了，完全没当回事儿，只是过敏而已，慢慢就好了，顶多就是腿上难看点儿。然而随后三天，腿上的小血点越来越多，我老婆就不放心了，于是在好大夫上花钱问了好多专家，都建议让看看中医，说西医看这病没有特效药。</p>
-<h2 id="2016-10-25"><a href="#2016-10-25" class="headerlink" title="2016-10-25"></a>2016-10-25</h2><p>   实在拧不过她，于是请了一天假，起了大早(5点)就出发，开车到了西苑中医院。7点开始挂号，她不敢让我多走动，于是自己在那儿5点半开始排队，站了1个半小时，挂上了号。</p>
-<p>   这次是一个女大夫，叫徐述。她给我号脉，说是由于脾胃虚弱，又加上感冒劳累。引起了这个病。这次没有给我开汤药，只是给开了他们医院秘制的中成药，让我每天喝几袋。最好可以休息两周，调理一下。</p>
-<p>   本来不想休息的，但早上排队的时候遇到了一个大姐，她是血小板性的过敏性紫癜，当时看的西医，吃了很多激素，直接成了股骨头坏死。和我讲这个病会引起肾炎，胃肠道出血，最严重的会尿毒症。发病期动的越多起的越多。说实话我就有点儿害怕了，想了想还是保命要紧，于是乎到公司和领导申请了两周假期。</p>
-<h2 id="2016-11-12"><a href="#2016-11-12" class="headerlink" title="2016-11-12"></a>2016-11-12</h2><p>  今天最好的哥们儿结婚，昨天下午开车两个小时到了固安，因为要当伴郎，基本上一晚上都没睡觉，早上5点多就开始忙活了起来。到了上午11点，感觉自己大腿小腿非常的酸痛，不经意间发现，手上也出现了很多小血点。当时的第一感觉就是完蛋了，这次麻烦大了。但人家大喜的日子，说这个让人家担心。忍着参加完婚礼，开车把同学们一个个送回了家，然后才回了丈母娘家。脱了裤子看了一眼，惨不忍睹。知道这次闯了大祸。</p>
-<h2 id="2017-01-01"><a href="#2017-01-01" class="headerlink" title="2017-01-01"></a>2017-01-01</h2><p>再有二十多天就要过年了，这一个多月天天在家里吃妈妈做的饭，天天除了睡觉就是睡觉，活动范围就是卧室，客厅，厕所。剩下的那儿都去不了。非常感觉姐姐，每次看病都接送我，帮我拿药带我看病。病情稍微有了一些缓解，出血点少了一点点，但依然不敢多走动。过几天就要上班了，打算天天打车上下班，确实感觉好奢侈但又没有办法。奥，对了，我还换了大夫，现在是一个很有经验的老中医，叫王彦斌，老头非常非常的nice，等看好了我，我给他送一面大锦旗。</p>
-<h2 id="2017-04-27"><a href="#2017-04-27" class="headerlink" title="2017-04-27"></a>2017-04-27</h2><p>还有整一个月就要结婚了，病还是没有好彻底，依然天天打车上下班。好消息是比以前好了许多，现在不会坐的时间长，臀部都有出血点了，大腿上的也少了许多。可心里依然很担心，害怕结婚的时候折腾两天又严重了。希望老天保佑，一定让我顺顺利利的把媳妇娶回家。</p>
-<h2 id="xxxx-xx-xx"><a href="#xxxx-xx-xx" class="headerlink" title="xxxx-xx-xx"></a>xxxx-xx-xx</h2><p>等哪天好了，我再来补充一个结尾，希望这个日子早点儿来临、</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">live</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/27/zd/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-bigdata" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/23/bigdata/">技术框架介绍(大数据篇)</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/23/bigdata/" class="archive-article-date">
-  	<time datetime="2017-04-23T02:03:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是我第一篇博客文章，千里之行始于脚下，希望自己养成良好的习惯，记录下工作生活中的点点滴滴。每天进步一点，积少成多，沉淀升华。 整理了一下从业需要的了解的相关技术，想慢慢的一点点细化这些架构，组合运用，可以做出一些好玩的东西出来。</p>
-<h2 id="hadoop"><a href="#hadoop" class="headerlink" title="hadoop"></a>hadoop</h2><p>hadoop 是一个开发和运行大规模数据的软件平台，属于appach组织，是一个开源项目，主要由java编写实现。核心架构包含hdfs(分布式存储)与mapreduce(分布式计算)组成。目前最新版本为3.0.0。它最早设计用于搜索引擎，为搜索存储海量数据，并进行索引建立。</p>
-<p>More info: <a href="http://hadoop.apache.org/" target="_blank" rel="external">官网</a></p>
-<h3 id="hdfs"><a href="#hdfs" class="headerlink" title="hdfs"></a>hdfs</h3><p>hdfs是一个分布式存储系统，源自于Google的GFS论文，简单理解为google实现的克隆版。它是一个高度容错的系统，能检测和应对硬件故障，用于在低成本的通用硬件上运行。</p>
-<p><img src="http://img.blog.csdn.net/20140222161019968?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd29zaGl3YW54aW4xMDIyMTM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Alt text"><br>Client：切分文件；访问HDFS；与NameNode交互，获取文件位置信息；与DataNode交互，读取和写入数据。</p>
-<p>NameNode：Master节点，在hadoop1.X中只有一个，管理HDFS的名称空间和数据块映射信息，配置副本策略，处理客户端请求。</p>
-<p>DataNode：Slave节点，存储实际的数据，汇报存储信息给NameNode。</p>
-<p>Secondary NameNode：辅助NameNode，分担其工作量；定期合并fsimage和fsedits，推<br>送给NameNode；紧急情况下，可辅助恢复NameNode，但Secondary NameNode并非NameNode的热备</p>
-<h3 id="mapreduce"><a href="#mapreduce" class="headerlink" title="mapreduce"></a>mapreduce</h3><p>源自于google的MapReduce论文，Hadoop MapReduce是google MapReduce 克隆版。是一个分布式计算框架，mapreduce 实现了算法迁移，写好的程序会被分配到各个datanode节点执行。mapreduce会频繁的读写本地文件，进行排序，归类。</p>
-<p><img src="http://img.blog.csdn.net/20140222162536546?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd29zaGl3YW54aW4xMDIyMTM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Alt text"></p>
-<p>input: 要读取的文件列表，获取文件大小位置信息</p>
-<p>splitting: 对文件进行切割,分片到各个节点</p>
-<p>mapping: 详细的读取逻辑，组合成 k-v 形式，存储文件</p>
-<p>shuffing:  根据key合并结果集，将数据分发到不同的reduce</p>
-<p>reducing: 合并后结果，具体的处理逻辑实现</p>
-<p>final result: 输出计算结果</p>
-<h2 id="hive"><a href="#hive" class="headerlink" title="hive"></a>hive</h2><p>由facebook开源，解决了海量数据结构化查询的问题。运行在mapredece之上，记性了sql化的封装。适用于离线数据的计算，隔离了mapreduce编写，大大提升了效率。</p>
-<p><img src="http://img.blog.csdn.net/20140222161841875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd29zaGl3YW54aW4xMDIyMTM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Alt text"></p>
-<p>More info: <a href="http://hive.apache.org/" target="_blank" rel="external">官网</a></p>
-<h2 id="zookeeper"><a href="#zookeeper" class="headerlink" title="zookeeper"></a>zookeeper</h2><p>源自Google的Chubby论文,是Hadoop和Hbase的重要组件。提供的功能包括：配置维护、域名服务、分布式同步、组服务等。可以理解为分布式的监听模式实现。</p>
-<p>More info: <a href="http://zookeeper.apache.org/" target="_blank" rel="external">官网</a></p>
-<h2 id="spark"><a href="#spark" class="headerlink" title="spark"></a>spark</h2><p>spark 为迭代式数据处理提供更好的支持。每次迭代的数据可以保存在内存中，而不是写入文件.相对于mapreduce框架，频繁的将文件读写到磁盘，性能上有极大的提升。而且spark提供了一套完整的解决方案，包括spark sql (交互封装),spark streaming (流式计算),MLlib(机器学习), GraphX(图计算)等一套完整方案 。它将动作封装成了一个个RDD，分为转化和动作两类。</p>
-<p>More info: <a href="http://spark.apache.org/" target="_blank" rel="external">官网</a></p>
-<h2 id="oozie"><a href="#oozie" class="headerlink" title="oozie"></a>oozie</h2><p>是一个工作流框架，可以将mapreduce任务，hive任务，shell脚本，数据库访问。。。。,根据业务封装成工作流。工作流必须标记start,end节点，可以通过kill节点杀死任务，也可以通过fork&amp;join节点并行的执行任务。同时提供web端的任务流查询，是一个非常优秀的一个框架。</p>
-<p>More info: <a href="http://oozie.apache.org/" target="_blank" rel="external">官网</a></p>
-<h2 id="hbase"><a href="#hbase" class="headerlink" title="hbase"></a>hbase</h2><p>源自Google的Bigtable论文,由facebook开源,是一个键值对数据库，具有可伸缩，过性能，分布式的特点。可以对大规模数据进行随机访问，实时读写，是一个横向无限大的表。</p>
-<p><img src="http://www.bitstech.net/wp-content/uploads/2015/09/hbase.jpg?_=5571193" alt="Alt text"></p>
-<p>More info: <a href="http://hbase.apache.org/" target="_blank" rel="external">官网</a></p>
-<h2 id="mahout"><a href="#mahout" class="headerlink" title="mahout"></a>mahout</h2><p>Mahout 是一个很强大的数据挖掘工具，是一个分布式机器学习算法的集合，包括：被称为Taste的分布式协同过滤的实现、分类、聚类等。Mahout最大的优点就是基于hadoop实现，把很多以前运行于单机上的算法，转化为了MapReduce模式，这样大大提升了算法可处理的数据量和处理性能。</p>
-<p>More info: <a href="http://mahout.apache.org/" target="_blank" rel="external">官网</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/23/bigdata/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
