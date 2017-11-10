@@ -175,6 +175,152 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-redis-cluster-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/10/redis-cluster-1/">redis cluster 集群搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/10/redis-cluster-1/" class="archive-article-date">
+  	<time datetime="2017-10-10T12:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="redis-集群搭建"><a href="#redis-集群搭建" class="headerlink" title="redis 集群搭建"></a>redis 集群搭建</h2><h3 id="1-结构简述"><a href="#1-结构简述" class="headerlink" title="1, 结构简述"></a>1, 结构简述</h3><p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/redis_cluster_1.jpg" alt="Alt text"></p>
+<p>Redis 集群是一个可以在多个 Redis 节点之间进行数据共享的设施（installation）。</p>
+<p>Redis 集群不支持那些需要同时处理多个键的 Redis 命令， 因为执行这些命令需要在多个 Redis 节点之间移动数据， 并且在高负载的情况下， 这些命令将降低 Redis 集群的性能， 并导致不可预测的行为。</p>
+<p>Redis 集群通过分区（partition）来提供一定程度的可用性（availability）： 即使集群中有一部分节点失效或者无法进行通讯， 集群也可以继续处理命令请求。</p>
+<p>Redis 集群提供了以下两个好处：</p>
+<ul>
+<li>将数据自动切分（split）到多个节点的能力。</li>
+<li>当集群中的一部分节点失效或者无法进行通讯时， 仍然可以继续处理命令请求的能力。</li>
+</ul>
+<p>Redis 集群使用数据分片（sharding）而非一致性哈希（consistency hashing）来实现： 一个 Redis 集群包含 16384 个哈希槽（hash slot）， 数据库中的每个键都属于这 16384 个哈希槽的其中一个， 集群使用公式 CRC16(key) % 16384 来计算键 key 属于哪个槽， 其中 CRC16(key) 语句用于计算键 key 的 CRC16 校验和 。</p>
+<p>集群中的每个节点负责处理一部分哈希槽。 举个例子， 一个集群可以有三个哈希槽， 其中：</p>
+<ul>
+<li>节点 A 负责处理 0 号至 5500 号哈希槽</li>
+<li>节点 B 负责处理 5501 号至 11000 号哈希槽。</li>
+<li>节点 C 负责处理 11001 号至 16384 号哈希槽。</li>
+</ul>
+<p>这种将哈希槽分布到不同节点的做法使得用户可以很容易地向集群中添加或者删除节点。 比如说：</p>
+<ul>
+<li><p>如果用户将新节点 D 添加到集群中， 那么集群只需要将节点 A 、B 、 C 中的某些槽移动到节点 D 就可以了。</p>
+</li>
+<li><p>与此类似， 如果用户要从集群中移除节点 A ， 那么集群只需要将节点 A 中的所有哈希槽移动到节点 B 和节点 C ， 然后再移除空白（不包含任何哈希槽）的节点 A 就可以了。</p>
+</li>
+</ul>
+<p>因为将一个哈希槽从一个节点移动到另一个节点不会造成节点阻塞， 所以无论是添加新节点还是移除已存在节点， 又或者改变某个节点包含的哈希槽数量， 都不会造成集群下线。</p>
+<p>为了使得集群在一部分节点下线或者无法与集群的大多数（majority）节点进行通讯的情况下， 仍然可以正常运作， Redis 集群对节点使用了主从复制功能： 集群中的每个节点都有 1 个至 N 个复制品（replica）， 其中一个复制品为主节点（master）， 而其余的 N-1 个复制品为从节点（slave）。</p>
+<p>在之前列举的节点 A 、B 、C 的例子中， 如果节点 B 下线了， 那么集群将无法正常运行， 因为集群找不到节点来处理 5501 号至 11000号的哈希槽。</p>
+<p>另一方面， 假如在创建集群的时候（或者至少在节点 B 下线之前）， 我们为主节点 B 添加了从节点 B1 ， 那么当主节点 B 下线的时候， 集群就会将 B1 设置为新的主节点， 并让它代替下线的主节点 B ， 继续处理 5501 号至 11000 号的哈希槽， 这样集群就不会因为主节点 B 的下线而无法正常运作了。</p>
+<p>不过如果节点 B 和 B1 都下线的话， Redis 集群还是会停止运作。</p>
+<p>架构细节:</p>
+<ul>
+<li><p>所有的redis节点彼此互联(PING-PONG机制),内部使用二进制协议优化传输速度和带宽.</p>
+</li>
+<li><p>节点的fail是通过集群中超过半数的节点检测失效时才生效.</p>
+</li>
+<li><p>客户端与redis节点直连,不需要中间proxy层.客户端不需要连接集群所有节点,连接集群中任何一个可用节点即可</p>
+</li>
+<li><p>redis-cluster把所有的物理节点映射到[0-16383]slot上,cluster 负责维护node&lt;-&gt;slot&lt;-&gt;value</p>
+</li>
+</ul>
+<h3 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h3><h4 id="1-安装包下载"><a href="#1-安装包下载" class="headerlink" title="(1) 安装包下载"></a>(1) 安装包下载</h4><ul>
+<li>redis 安装包</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://download.redis.io/releases/redis-3.2.9.tar.gz</div></pre></td></tr></table></figure>
+<ul>
+<li>ruby 安装包</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://cache.ruby-lang.org/pub/ruby/2.2/ruby-2.2.8.tar.gz</div></pre></td></tr></table></figure>
+<h4 id="2-安装redis"><a href="#2-安装redis" class="headerlink" title="(2) 安装redis"></a>(2) 安装redis</h4><ul>
+<li>编译安装包</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd redis-3.2.9</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure>
+<ul>
+<li>创建节点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cd redis-3.2.9</div><div class="line">mkdir cluster/40000</div><div class="line">mkdir cluster/40001</div><div class="line">mkdir cluster/40002</div></pre></td></tr></table></figure>
+<ul>
+<li>复制配置文件到节点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">cp redis.conf cluster/40000</div><div class="line">cp redis.conf cluster/40001</div><div class="line">cp redis.conf cluster/40002</div><div class="line">cp redis.conf cluster/40003</div><div class="line">cp redis.conf cluster/40004</div><div class="line">cp redis.conf cluster/40005</div></pre></td></tr></table></figure>
+<ul>
+<li>更具端口及ip，修改各个节点的配置文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">##端口</div><div class="line">port  40001</div><div class="line">##本地ip</div><div class="line">bind  192.168.0.1</div><div class="line">##redis后台运行</div><div class="line">daemonize    yes</div><div class="line">##redis后台运行</div><div class="line">pidfile  /var/run/redis_4001.pid</div><div class="line">## 开启集群 </div><div class="line">cluster-enabled  yes</div><div class="line">## 集群的配置  配置文件首次启动自动生成</div><div class="line">cluster-config-file  nodes_4001.conf</div><div class="line">## 请求超时  默认15秒，可自行设置</div><div class="line">cluster-node-timeout  15000</div><div class="line">## aof日志开启  有需要就开启，它会每次写操作都记录一条日志</div><div class="line">##appendonly  yes</div><div class="line">##权限校验</div><div class="line">##requirepass redis_password</div><div class="line">##masterauth redis_password</div></pre></td></tr></table></figure>
+<ul>
+<li><p>复制修改后的程序到各个节点(略)</p>
+</li>
+<li><p>在每台服务器分别启动主节点</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">ssh s1</div><div class="line">cd cluster/40000</div><div class="line">redis-server redis.conf</div><div class="line"></div><div class="line">ssh s2</div><div class="line">cd cluster/40001</div><div class="line">redis-server redis.conf</div><div class="line"></div><div class="line">ssh s3</div><div class="line">cd cluster/40002</div><div class="line">redis-server redis.conf</div></pre></td></tr></table></figure>
+<ul>
+<li>驱动主节点</li>
+</ul>
+<p>先不做从库备份，只做master节点。redis-trib.rb在一个节点运行即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$&#123;redis_home&#125;/src/redis-trib.rb create --replicas 0 s1_ip:40000 s1_ip: 40001 s1_ip: 40002</div></pre></td></tr></table></figure>
+<ul>
+<li>获取master节点id</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis-client 运行 , CLUSTER NODES 命令</div></pre></td></tr></table></figure>
+<ul>
+<li>添加并启动slave 节点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">ssh s1</div><div class="line">cd cluster/40003</div><div class="line">redis-server redis.conf</div><div class="line"></div><div class="line">ssh s2</div><div class="line">cd cluster/40004</div><div class="line">redis-server redis.conf</div><div class="line"></div><div class="line">ssh s3</div><div class="line">cd cluster/40005</div><div class="line">redis-server redis.conf</div><div class="line"></div><div class="line">redis-trib.rb add-node --slave --master-id s1主节点id s1_ip:41003 s1_ip:41000</div><div class="line"></div><div class="line">redis-trib.rb add-node --slave --master-id s2主节点id s1_ip:41004 s1_ip:41001</div><div class="line"></div><div class="line">redis-trib.rb add-node --slave --master-id s3主节点id s1_ip:41005 s1_ip:41002</div></pre></td></tr></table></figure>
+<h4 id="（3）-安装ruby"><a href="#（3）-安装ruby" class="headerlink" title="（3） 安装ruby"></a>（3） 安装ruby</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tar -xvzf ruby-2.2.8.tar.gz    </div><div class="line">cd ruby-2.2.8</div><div class="line"> ./configure</div></pre></td></tr></table></figure>
+<p>使用 ruby -v 严重安装是否成功</p>
+<p>安装 redis模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gem install redis</div></pre></td></tr></table></figure>
+<h3 id="3-注意"><a href="#3-注意" class="headerlink" title="3,注意"></a>3,注意</h3><p>必须要3个或以上的主节点，否则在创建集群时会失败，并且当存活的主节点数小于总节点数的一半时，整个集群就无法提供服务了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/10/redis-cluster-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-guava-collections" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1212,90 +1358,6 @@ false
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/24/lily-hbase-index-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-lily-hbase-index" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/22/lily-hbase-index/">lily hbase index 配置整理</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/22/lily-hbase-index/" class="archive-article-date">
-  	<time datetime="2017-05-22T04:29:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>注明：因为这部分内容涉及到工作，所以笔者会将真实的业务逻辑隐藏，呈现的例子不具有很强的业务性，如果数据场景不恰当还请见谅，就当一个解决方案看一下就好。</p>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>CDH5.3.2中的Key-Value Indexer使用的是Lily Hbase NRT Indexer服务，Lily HBase Indexer是一款灵活的、可扩展的、高容错的、事务性的，并且近实时的处理HBase列索引数据的分布式服务软件。它是NGDATA公司开发的Lily系统的一部分，已开放源代码。Lily HBase Indexer使用SolrCloud来存储HBase的索引数据，当HBase执行写入、更新或删除操作时，Indexer通过HBase的replication功能来把这些操作抽象成一系列的Event事件，并用来保证写入Solr中的HBase索引数据的一致性。并且Indexer支持用户自定义的抽取，转换规则来索引HBase列数据。</p>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="1-创建hbase表"><a href="#1-创建hbase表" class="headerlink" title="1. 创建hbase表"></a>1. 创建hbase表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">##创建名称为basicdata 的空间，类似于库的概念</div><div class="line">create_namespace &apos;basic_data&apos;</div><div class="line">##basic_data库中创建user_info表，指定列族名称为data，只留一个版本，采用lzo压缩，并开启同步功能。</div><div class="line">create &apos;basic_data:user_info&apos;,&#123;NAME =&gt; &apos;data&apos;, VERSIONS =&gt; 1,COMPRESSION =&gt; &apos;lzo&apos;,REPLICATION_SCOPE =&gt; 1&#125;</div></pre></td></tr></table></figure>
-<p>创建完成之后可以通过，<a href="http://xxxx.xxx.xx:60010" target="_blank" rel="external">http://xxxx.xxx.xx:60010</a> 查看表是否创建情况</p>
-<p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/lily_index_1.png" alt="Alt text"></p>
-<h3 id="2-创建SolrCloud-集合"><a href="#2-创建SolrCloud-集合" class="headerlink" title="2. 创建SolrCloud 集合"></a>2. 创建SolrCloud 集合</h3><p>(1） 使用 instancedir generate 命令,生成solr的基本配置文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solrctl instancedir --generate ~/weixingxin/basic_data:user_info</div></pre></td></tr></table></figure></p>
-<p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/lily%20index.png" alt="Alt text"></p>
-<p>(2) 修改~/weixingxin/basic_data:user_info/conf/schema.xml 文件，配置需要索引的列信息及规则。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;field name=&quot;user_id&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot; required=&quot;true&quot; multiValued=&quot;false&quot; /&gt;</div><div class="line">&lt;field name=&quot;user_name&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot; required=&quot;false&quot; multiValued=&quot;false&quot; /&gt;</div><div class="line">&lt;field name=&quot;sex&quot; type=&quot;string&quot; indexed=&quot;true&quot; stored=&quot;true&quot; required=&quot;false&quot; multiValued=&quot;false&quot; /&gt;</div><div class="line">&lt;field name=&quot;age&quot; type=&quot;long&quot; indexed=&quot;true&quot; stored=&quot;true&quot; required=&quot;false&quot; multiValued=&quot;false&quot; /&gt;</div></pre></td></tr></table></figure>
-<p>(3)创建collection 名为basic_data_user_info</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solrctl instancedir --create basic_data_user_info ~/weixingxin/basic_data:user_info</div></pre></td></tr></table></figure>
-<p>运行命令后，solr会将文件同步到各个zookpeer节点上，实现分布式配置。</p>
-<p>(4) 创建basic_data_user_info 的分片数为4</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">solrctl collection --create basic_data_user_info -s 4</div></pre></td></tr></table></figure>
-<p>(5)其他命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">##查看已经创建好的所有集合</div><div class="line">solrctl instancedir --list</div><div class="line">##删除创建好的solr索引</div><div class="line">solrctl collection --delete basic_data_user_info</div><div class="line">##删除集合配置</div><div class="line">solrctl instancedir --delete basic_data_user_info</div></pre></td></tr></table></figure></p>
-<p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/lily_index_2.png" alt="Alt text"></p>
-<h3 id="3-lily-index-配置"><a href="#3-lily-index-配置" class="headerlink" title="3. lily index 配置"></a>3. lily index 配置</h3><p>(1) 配置Morphlines文件，此文件映射了hbase的列与solr的关系</p>
-<p><img src="https://raw.githubusercontent.com/nick-weixx/nick-weixx.github.io/master/img/lily_index_3.png" alt="Alt text"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">SOLR_LOCATOR : &#123;</div><div class="line"># Name of solr collection</div><div class="line">collection : basic_data_user_info</div><div class="line"># ZooKeeper ensemble</div><div class="line">zkHost : &quot;$ZK_HOST&quot;</div><div class="line">&#125;</div><div class="line">morphlines : [</div><div class="line">&#123;</div><div class="line">	id : basic_data_user_info_Map</div><div class="line">	importCommands : [&quot;org.kitesdk.**&quot;, &quot;com.ngdata.**&quot;]</div><div class="line">	commands : [</div><div class="line">		&#123;</div><div class="line">			extractHBaseCells &#123;</div><div class="line">				mappings : [</div><div class="line">				&#123;</div><div class="line">				inputColumn : &quot;data:user_id&quot;</div><div class="line">				outputField : &quot;user_id&quot;</div><div class="line">				type : string</div><div class="line">				source : value</div><div class="line">				&#125;,</div><div class="line">				&#123;</div><div class="line">				inputColumn : &quot;data:user_name&quot;</div><div class="line">				outputField : &quot;user_name&quot;</div><div class="line">				type : long</div><div class="line">				source : value</div><div class="line">				&#125;,</div><div class="line">				&#123;</div><div class="line">				inputColumn : &quot;data:sex&quot;</div><div class="line">				outputField : &quot;sex&quot;</div><div class="line">				type : long</div><div class="line">				source : value</div><div class="line">				&#125;,</div><div class="line">				&#123;</div><div class="line">				inputColumn : &quot;data:age&quot;</div><div class="line">				outputField : &quot;age&quot;</div><div class="line">				type : string</div><div class="line">				source : value</div><div class="line">				&#125;]</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		&#123; logDebug &#123; format : &quot;output record: &#123;&#125;&quot;, args : [&quot;@&#123;&#125;&quot;] &#125; &#125;</div><div class="line">	]</div><div class="line">&#125;]</div></pre></td></tr></table></figure>
-<p>(2) 配置morphline-hbase-mapper.xml 文件，将Morphlines 与 hbase basic_data:user_info表 关联</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot;?&gt;</div><div class="line"> &lt;!-- table：需要索引的HBase表名称--&gt;</div><div class="line"> &lt;!-- mapper：用来实现和读取指定的Morphline配置文件类，固定为MorphlineResultToSolrMapper--&gt;</div><div class="line">&lt;indexer table=&quot;basic_data:user_info&quot; read-row=&quot;never&quot;  mapper=&quot;com.ngdata.hbaseindexer.morphline.MorphlineResultToSolrMapper&quot;&gt;</div><div class="line">   &lt;!--param中的name参数用来指定当前配置为morphlineFile文件 --&gt;</div><div class="line">   &lt;!--value用来指定morphlines.conf文件的路径，绝对或者相对路径用来指定本地路径，如果是使用Cloudera Manager来管理morphlines.conf就直接写入值morphlines.conf&quot;--&gt;</div><div class="line">   &lt;param name=&quot;morphlineFile&quot; value=&quot;morphlines.conf&quot;/&gt;</div><div class="line">      &lt;!-- The optional morphlineId identifies a morphline if there are multiple morphlines in morphlines.conf --&gt;</div><div class="line">   &lt;param name=&quot;morphlineId&quot; value=&quot;basic_data_user_info_Map&quot;/&gt;</div><div class="line">&lt;/indexer&gt;</div></pre></td></tr></table></figure>
-<p>(3) 同步morphline-hbase-mapper.xml配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">hbase-indexer add-indexer \</div><div class="line"> --name cloudIndexer \</div><div class="line"> --indexer-conf \</div><div class="line">~/weixingxin/solr_config/morphline-hbase-mapper.xml \</div><div class="line"> --connection-param solr.zk=hadoops15:2181/solr \</div><div class="line"> --connection-param solr.collection=basic_data_user_info \</div><div class="line"> --zookeeper hadoops15:2181</div></pre></td></tr></table></figure>
-<p>查看更多命令参数：hbase-indexer add-indexer –help</p>
-<hr>
-<p>到此lily index 的配置完成，下一篇导入数据，测试索引。。。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/22/lily-hbase-index/">展开全文 >></a>
         </p>
       
 
