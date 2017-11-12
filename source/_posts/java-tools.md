@@ -1,5 +1,5 @@
 ---
-title: jmap命令
+title: jmap,jconsole命令
 date: 2017-10-12 22:17:49
 tags:
     - frame

@@ -182,7 +182,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/12/java-tools/">jmap命令</a>
+      <a class="article-title" href="/2017/10/12/java-tools/">jmap,jconsole命令</a>
     </h1>
   
 
@@ -410,130 +410,6 @@
 
 
   
-    <article id="post-guava-cllections2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/guava-cllections2/">guava 新集合类型2</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/22/guava-cllections2/" class="archive-article-date">
-  	<time datetime="2017-09-22T12:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h2><p>Guava为此提供了新集合类型Table，它有两个支持所有类型的键：”行”和”列”。替代了类似Map<string, map<string,integer="">&gt;的实现，这种方式很丑陋,使用不友好的数据结构。</string,></p>
-<p>举个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">    System.out.println(&quot;java hashmap...\n&quot;);</div><div class="line">Map&lt;String, Map&lt;String, Integer&gt;&gt; t1 = new HashMap&lt;String, Map&lt;String, Integer&gt;&gt;();</div><div class="line">Map&lt;String, Integer&gt; nick = new HashMap&lt;String, Integer&gt;();</div><div class="line">nick.put(&quot;math&quot;, 100);</div><div class="line">nick.put(&quot;chinese&quot;, 99);</div><div class="line">nick.put(&quot;en&quot;, 98);</div><div class="line">nick.put(&quot;en&quot;, 100);</div><div class="line">Map&lt;String, Integer&gt; david = new HashMap&lt;String, Integer&gt;();</div><div class="line">david.put(&quot;math&quot;, 101);</div><div class="line">david.put(&quot;chinese&quot;, 102);</div><div class="line">david.put(&quot;en&quot;, 102);</div><div class="line">t1.put(&quot;nick&quot;, nick);</div><div class="line">t1.put(&quot;david&quot;, david);</div><div class="line">System.out.println(&quot;row: &quot; + t1.get(&quot;nick&quot;));</div><div class="line"></div><div class="line">System.out.println(&quot;\n guava HashBasedTable...\n&quot;);</div><div class="line">Table&lt;String, String, Integer&gt; table = HashBasedTable.create();</div><div class="line">table.put(&quot;nick&quot;, &quot;math&quot;, 100);</div><div class="line">table.put(&quot;nick&quot;, &quot;chinese&quot;, 99);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 98);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 100);</div><div class="line">table.put(&quot;david&quot;, &quot;math&quot;, 101);</div><div class="line">table.put(&quot;david&quot;, &quot;chinese&quot;, 102);</div><div class="line">table.put(&quot;david&quot;, &quot;en&quot;, 102);</div><div class="line">System.out.println(&quot;all col: &quot; + table.columnMap());</div><div class="line">System.out.println(&quot;rowkeys: &quot; + table.rowKeySet());</div><div class="line">System.out.println(&quot;vals: &quot; + table.values());</div><div class="line">System.out.println(&quot;col: &quot; + table.column(&quot;chinese&quot;));</div><div class="line">System.out.println(&quot;row: &quot; + table.row(&quot;nick&quot;));</div><div class="line">System.out.println(&quot;is contains column:[math] &quot; +  table.containsColumn(&quot;math&quot;));</div><div class="line">System.out.println(&quot;is contains row:[nick] &quot; + table.containsRow(&quot;nick&quot;));</div><div class="line"></div><div class="line">//只读表</div><div class="line">System.out.println(&quot;\n guava ImmutableTable...\n&quot;);</div><div class="line">Table&lt;String, String, Integer&gt; table = HashBasedTable.create();</div><div class="line">table.put(&quot;nick&quot;, &quot;math&quot;, 100);</div><div class="line">table.put(&quot;nick&quot;, &quot;chinese&quot;, 99);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 98);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 100);</div><div class="line">table.put(&quot;david&quot;, &quot;math&quot;, 101);</div><div class="line">table.put(&quot;david&quot;, &quot;chinese&quot;, 102);</div><div class="line">table.put(&quot;david&quot;, &quot;en&quot;, 102);</div><div class="line">ImmutableTable&lt;String, String, Integer&gt; copyImutable = ImmutableTable.copyOf(table);</div><div class="line">System.out.println(&quot;all col: &quot; + copyImutable.columnMap());</div><div class="line">System.out.println(&quot;rowkeys: &quot; + copyImutable.rowKeySet());</div><div class="line">System.out.println(&quot;vals: &quot; + copyImutable.values());</div><div class="line">System.out.println(&quot;col: &quot; + copyImutable.column(&quot;chinese&quot;));</div><div class="line">System.out.println(&quot;row: &quot; + copyImutable.row(&quot;nick&quot;));</div><div class="line">System.out.println(&quot;is contains column:[math] &quot; + copyImutable.containsColumn(&quot;math&quot;));</div><div class="line">System.out.println(&quot;is contains row:[nick] &quot; + copyImutable.containsRow(&quot;nick&quot;));</div><div class="line"></div><div class="line">//二维数组</div><div class="line">Table&lt;String, String, Integer&gt; table = HashBasedTable.create();</div><div class="line">table.put(&quot;nick&quot;, &quot;math&quot;, 100);</div><div class="line">table.put(&quot;nick&quot;, &quot;chinese&quot;, 99);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 98);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 100);</div><div class="line">table.put(&quot;david&quot;, &quot;math&quot;, 101);</div><div class="line">table.put(&quot;david&quot;, &quot;chinese&quot;, 102);</div><div class="line">table.put(&quot;david&quot;, &quot;en&quot;, 102);</div><div class="line">ArrayTable&lt;String, String, Integer&gt; arrTab = ArrayTable.create(table);</div><div class="line">System.out.println(&quot;row key: &quot; + arrTab.rowKeyList());</div><div class="line">System.out.println(&quot;column key: &quot; + arrTab.columnKeyList());</div></pre></td></tr></table></figure>
-<ul>
-<li>table.row(“nick”)： 用Map\<c, v="">返回给定”行”的所有列，对这个map进行的写操作也将写入Table中。</c,></li>
-<li><p>table.rowKeySet()：返回所有行键，Set\<r> 格式</r></p>
-</li>
-<li><p>cellSet()：用元素类型为Table.Cell\<r, c,="" v="">的Set表现Table\<r, c,="" v="">。Cell类似于Map.Entry，但它是用行和列两个键区分的</r,></r,></p>
-</li>
-</ul>
-<p>guava为我们提供了如下Multiset类型集合：</p>
-<table>
-<thead>
-<tr>
-<th>实现(TABLE)</th>
-<th style="text-align:center">是否重复值插入</th>
-<th style="text-align:right">是否支持null</th>
-<th>是否线程安全</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>HashBasedTable</td>
-<td style="text-align:center">Y</td>
-<td style="text-align:right">Y</td>
-<td>N</td>
-<td>HashMap<r, hashmap<c,="" v="">&gt;实现</r,></td>
-</tr>
-<tr>
-<td>TreeBasedTable</td>
-<td style="text-align:center">Y</td>
-<td style="text-align:right">Y</td>
-<td>N</td>
-<td>TreeMap<r, treemap<c,v="">&gt;实现</r,></td>
-</tr>
-<tr>
-<td>ArrayTable</td>
-<td style="text-align:center">Y</td>
-<td style="text-align:right">Y</td>
-<td>N</td>
-<td>二维数组实现，与其他TABLE工作原理不同</td>
-</tr>
-<tr>
-<td>ImmutableTable</td>
-<td style="text-align:center">N</td>
-<td style="text-align:right">N</td>
-<td>Y</td>
-<td>只读table实现,ImmutableMap<r, immutablemap<c,="" v="">&gt;</r,></td>
-</tr>
-</tbody>
-</table>
-<h2 id="RangeSet"><a href="#RangeSet" class="headerlink" title="RangeSet"></a>RangeSet</h2><p>RangeSet描述了一组不相连的、非空的区间。当把一个区间添加到可变的RangeSet时，所有相连的区间会被合并，空区间会被忽略。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">  RangeSet&lt;Integer&gt; rangeSet = TreeRangeSet.create();</div><div class="line">rangeSet.add(Range.closed(1, 10));//[[1‥10]]  1&lt;=x&lt;=10</div><div class="line">System.out.println(rangeSet);</div><div class="line">rangeSet.add(Range.closedOpen(11, 15));//[[1‥10], [11‥15)] 11&lt;=x&lt;15</div><div class="line">System.out.println(rangeSet);</div><div class="line">rangeSet.add(Range.open(15, 20));//[[1‥10], [11‥15), (15‥20)] 15&lt;x&lt;20</div><div class="line">System.out.println(rangeSet);</div><div class="line">rangeSet.add(Range.openClosed(0, 0));//[[1‥10], [11‥15), (15‥20)] 空区间 0&lt;x&lt;0</div><div class="line">System.out.println(rangeSet);</div><div class="line">rangeSet.remove(Range.open(5, 10));// [[1‥5], [10‥10], [11‥15), (15‥20)] 移除区间 5&lt;x&lt;9</div><div class="line">System.out.println(rangeSet);</div><div class="line">//互补区间</div><div class="line">System.out.println(&quot;补集: &quot;+rangeSet.complement());</div><div class="line"></div><div class="line">// 是否在区间内</div><div class="line">System.out.println(&quot;单点21是否在区间内：&quot; + rangeSet.contains(21));// false</div><div class="line">System.out.println(&quot;单点9是否在区间内：&quot; + rangeSet.contains(9));// true</div><div class="line">// 元素所在区间</div><div class="line">System.out.println(&quot;元素15所在区间：&quot; + rangeSet.rangeContaining(15));</div><div class="line">System.out.println(&quot;元素7所在区间：&quot; + rangeSet.rangeContaining(7));</div><div class="line"></div><div class="line">// 范围是否在区间内</div><div class="line">System.out.println(&quot;定义区间是否在区间内&quot; + rangeSet.encloses(Range.closedOpen(18, 20)));</div></pre></td></tr></table></figure>
-<ul>
-<li>complement()：返回RangeSet的补集视图。complement也是RangeSet类型,包含了不相连的、非空的区间。</li>
-<li>subRangeSet(Range<c>)：返回RangeSet与给定Range的交集视图。这扩展了传统排序集合中的headSet、subSet和tailSet操作。</c></li>
-<li>asRanges()：用Set<range<c>&gt;表现RangeSet，这样可以遍历其中的Range。</range<c></li>
-<li>asSet(DiscreteDomain<c>)（仅ImmutableRangeSet支持）：用ImmutableSortedSet<c>表现RangeSet，以区间中所有元素的形式而不是区间本身的形式查看。（这个操作不支持DiscreteDomain 和RangeSet都没有上边界，或都没有下边界的情况）</c></c></li>
-</ul>
-<h2 id="RangeMap"><a href="#RangeMap" class="headerlink" title="RangeMap"></a>RangeMap</h2><p>RangeMap描述了”不相交的、非空的区间”到特定值的映射。和RangeSet不同，RangeMap不会合并相邻的映射，即便相邻的区间映射到相同的值。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">RangeMap&lt;Integer, String&gt; rangeMap = TreeRangeMap.create();</div><div class="line">rangeMap.put(Range.closed(1, 10), &quot;foo&quot;); //&#123;[1,10] =&gt; &quot;foo&quot;&#125;</div><div class="line">rangeMap.put(Range.open(3, 6), &quot;bar&quot;); //&#123;[1,3] =&gt; &quot;foo&quot;, (3,6) =&gt; &quot;bar&quot;, [6,10] =&gt; &quot;foo&quot;&#125;</div><div class="line">rangeMap.put(Range.open(10, 20), &quot;foo&quot;); //&#123;[1,3] =&gt; &quot;foo&quot;, (3,6) =&gt; &quot;bar&quot;, [6,10] =&gt; &quot;foo&quot;, (10,20) =&gt; &quot;foo&quot;&#125;</div><div class="line">rangeMap.remove(Range.closed(5, 11)); //&#123;[1,3] =&gt; &quot;foo&quot;, (3,5) =&gt; &quot;bar&quot;, (11,20) =&gt; &quot;foo&quot;&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>asMapOfRanges()：用Map<range<k>, V&gt;表现RangeMap。这可以用来遍历RangeMap。</range<k></li>
-<li>subRangeMap(Range<k>)：用RangeMap类型返回RangeMap与给定Range的交集视图。这扩展了传统的headMap、subMap和tailMap操作。</k></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/22/guava-cllections2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
     <article id="post-guava-collections" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -709,6 +585,130 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/09/22/guava-collections/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-guava-cllections2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/guava-cllections2/">guava 新集合类型2</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/22/guava-cllections2/" class="archive-article-date">
+  	<time datetime="2017-09-22T12:02:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h2><p>Guava为此提供了新集合类型Table，它有两个支持所有类型的键：”行”和”列”。替代了类似Map<string, map<string,integer="">&gt;的实现，这种方式很丑陋,使用不友好的数据结构。</string,></p>
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">    System.out.println(&quot;java hashmap...\n&quot;);</div><div class="line">Map&lt;String, Map&lt;String, Integer&gt;&gt; t1 = new HashMap&lt;String, Map&lt;String, Integer&gt;&gt;();</div><div class="line">Map&lt;String, Integer&gt; nick = new HashMap&lt;String, Integer&gt;();</div><div class="line">nick.put(&quot;math&quot;, 100);</div><div class="line">nick.put(&quot;chinese&quot;, 99);</div><div class="line">nick.put(&quot;en&quot;, 98);</div><div class="line">nick.put(&quot;en&quot;, 100);</div><div class="line">Map&lt;String, Integer&gt; david = new HashMap&lt;String, Integer&gt;();</div><div class="line">david.put(&quot;math&quot;, 101);</div><div class="line">david.put(&quot;chinese&quot;, 102);</div><div class="line">david.put(&quot;en&quot;, 102);</div><div class="line">t1.put(&quot;nick&quot;, nick);</div><div class="line">t1.put(&quot;david&quot;, david);</div><div class="line">System.out.println(&quot;row: &quot; + t1.get(&quot;nick&quot;));</div><div class="line"></div><div class="line">System.out.println(&quot;\n guava HashBasedTable...\n&quot;);</div><div class="line">Table&lt;String, String, Integer&gt; table = HashBasedTable.create();</div><div class="line">table.put(&quot;nick&quot;, &quot;math&quot;, 100);</div><div class="line">table.put(&quot;nick&quot;, &quot;chinese&quot;, 99);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 98);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 100);</div><div class="line">table.put(&quot;david&quot;, &quot;math&quot;, 101);</div><div class="line">table.put(&quot;david&quot;, &quot;chinese&quot;, 102);</div><div class="line">table.put(&quot;david&quot;, &quot;en&quot;, 102);</div><div class="line">System.out.println(&quot;all col: &quot; + table.columnMap());</div><div class="line">System.out.println(&quot;rowkeys: &quot; + table.rowKeySet());</div><div class="line">System.out.println(&quot;vals: &quot; + table.values());</div><div class="line">System.out.println(&quot;col: &quot; + table.column(&quot;chinese&quot;));</div><div class="line">System.out.println(&quot;row: &quot; + table.row(&quot;nick&quot;));</div><div class="line">System.out.println(&quot;is contains column:[math] &quot; +  table.containsColumn(&quot;math&quot;));</div><div class="line">System.out.println(&quot;is contains row:[nick] &quot; + table.containsRow(&quot;nick&quot;));</div><div class="line"></div><div class="line">//只读表</div><div class="line">System.out.println(&quot;\n guava ImmutableTable...\n&quot;);</div><div class="line">Table&lt;String, String, Integer&gt; table = HashBasedTable.create();</div><div class="line">table.put(&quot;nick&quot;, &quot;math&quot;, 100);</div><div class="line">table.put(&quot;nick&quot;, &quot;chinese&quot;, 99);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 98);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 100);</div><div class="line">table.put(&quot;david&quot;, &quot;math&quot;, 101);</div><div class="line">table.put(&quot;david&quot;, &quot;chinese&quot;, 102);</div><div class="line">table.put(&quot;david&quot;, &quot;en&quot;, 102);</div><div class="line">ImmutableTable&lt;String, String, Integer&gt; copyImutable = ImmutableTable.copyOf(table);</div><div class="line">System.out.println(&quot;all col: &quot; + copyImutable.columnMap());</div><div class="line">System.out.println(&quot;rowkeys: &quot; + copyImutable.rowKeySet());</div><div class="line">System.out.println(&quot;vals: &quot; + copyImutable.values());</div><div class="line">System.out.println(&quot;col: &quot; + copyImutable.column(&quot;chinese&quot;));</div><div class="line">System.out.println(&quot;row: &quot; + copyImutable.row(&quot;nick&quot;));</div><div class="line">System.out.println(&quot;is contains column:[math] &quot; + copyImutable.containsColumn(&quot;math&quot;));</div><div class="line">System.out.println(&quot;is contains row:[nick] &quot; + copyImutable.containsRow(&quot;nick&quot;));</div><div class="line"></div><div class="line">//二维数组</div><div class="line">Table&lt;String, String, Integer&gt; table = HashBasedTable.create();</div><div class="line">table.put(&quot;nick&quot;, &quot;math&quot;, 100);</div><div class="line">table.put(&quot;nick&quot;, &quot;chinese&quot;, 99);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 98);</div><div class="line">table.put(&quot;nick&quot;, &quot;en&quot;, 100);</div><div class="line">table.put(&quot;david&quot;, &quot;math&quot;, 101);</div><div class="line">table.put(&quot;david&quot;, &quot;chinese&quot;, 102);</div><div class="line">table.put(&quot;david&quot;, &quot;en&quot;, 102);</div><div class="line">ArrayTable&lt;String, String, Integer&gt; arrTab = ArrayTable.create(table);</div><div class="line">System.out.println(&quot;row key: &quot; + arrTab.rowKeyList());</div><div class="line">System.out.println(&quot;column key: &quot; + arrTab.columnKeyList());</div></pre></td></tr></table></figure>
+<ul>
+<li>table.row(“nick”)： 用Map\<c, v="">返回给定”行”的所有列，对这个map进行的写操作也将写入Table中。</c,></li>
+<li><p>table.rowKeySet()：返回所有行键，Set\<r> 格式</r></p>
+</li>
+<li><p>cellSet()：用元素类型为Table.Cell\<r, c,="" v="">的Set表现Table\<r, c,="" v="">。Cell类似于Map.Entry，但它是用行和列两个键区分的</r,></r,></p>
+</li>
+</ul>
+<p>guava为我们提供了如下Multiset类型集合：</p>
+<table>
+<thead>
+<tr>
+<th>实现(TABLE)</th>
+<th style="text-align:center">是否重复值插入</th>
+<th style="text-align:right">是否支持null</th>
+<th>是否线程安全</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HashBasedTable</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:right">Y</td>
+<td>N</td>
+<td>HashMap<r, hashmap<c,="" v="">&gt;实现</r,></td>
+</tr>
+<tr>
+<td>TreeBasedTable</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:right">Y</td>
+<td>N</td>
+<td>TreeMap<r, treemap<c,v="">&gt;实现</r,></td>
+</tr>
+<tr>
+<td>ArrayTable</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:right">Y</td>
+<td>N</td>
+<td>二维数组实现，与其他TABLE工作原理不同</td>
+</tr>
+<tr>
+<td>ImmutableTable</td>
+<td style="text-align:center">N</td>
+<td style="text-align:right">N</td>
+<td>Y</td>
+<td>只读table实现,ImmutableMap<r, immutablemap<c,="" v="">&gt;</r,></td>
+</tr>
+</tbody>
+</table>
+<h2 id="RangeSet"><a href="#RangeSet" class="headerlink" title="RangeSet"></a>RangeSet</h2><p>RangeSet描述了一组不相连的、非空的区间。当把一个区间添加到可变的RangeSet时，所有相连的区间会被合并，空区间会被忽略。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">  RangeSet&lt;Integer&gt; rangeSet = TreeRangeSet.create();</div><div class="line">rangeSet.add(Range.closed(1, 10));//[[1‥10]]  1&lt;=x&lt;=10</div><div class="line">System.out.println(rangeSet);</div><div class="line">rangeSet.add(Range.closedOpen(11, 15));//[[1‥10], [11‥15)] 11&lt;=x&lt;15</div><div class="line">System.out.println(rangeSet);</div><div class="line">rangeSet.add(Range.open(15, 20));//[[1‥10], [11‥15), (15‥20)] 15&lt;x&lt;20</div><div class="line">System.out.println(rangeSet);</div><div class="line">rangeSet.add(Range.openClosed(0, 0));//[[1‥10], [11‥15), (15‥20)] 空区间 0&lt;x&lt;0</div><div class="line">System.out.println(rangeSet);</div><div class="line">rangeSet.remove(Range.open(5, 10));// [[1‥5], [10‥10], [11‥15), (15‥20)] 移除区间 5&lt;x&lt;9</div><div class="line">System.out.println(rangeSet);</div><div class="line">//互补区间</div><div class="line">System.out.println(&quot;补集: &quot;+rangeSet.complement());</div><div class="line"></div><div class="line">// 是否在区间内</div><div class="line">System.out.println(&quot;单点21是否在区间内：&quot; + rangeSet.contains(21));// false</div><div class="line">System.out.println(&quot;单点9是否在区间内：&quot; + rangeSet.contains(9));// true</div><div class="line">// 元素所在区间</div><div class="line">System.out.println(&quot;元素15所在区间：&quot; + rangeSet.rangeContaining(15));</div><div class="line">System.out.println(&quot;元素7所在区间：&quot; + rangeSet.rangeContaining(7));</div><div class="line"></div><div class="line">// 范围是否在区间内</div><div class="line">System.out.println(&quot;定义区间是否在区间内&quot; + rangeSet.encloses(Range.closedOpen(18, 20)));</div></pre></td></tr></table></figure>
+<ul>
+<li>complement()：返回RangeSet的补集视图。complement也是RangeSet类型,包含了不相连的、非空的区间。</li>
+<li>subRangeSet(Range<c>)：返回RangeSet与给定Range的交集视图。这扩展了传统排序集合中的headSet、subSet和tailSet操作。</c></li>
+<li>asRanges()：用Set<range<c>&gt;表现RangeSet，这样可以遍历其中的Range。</range<c></li>
+<li>asSet(DiscreteDomain<c>)（仅ImmutableRangeSet支持）：用ImmutableSortedSet<c>表现RangeSet，以区间中所有元素的形式而不是区间本身的形式查看。（这个操作不支持DiscreteDomain 和RangeSet都没有上边界，或都没有下边界的情况）</c></c></li>
+</ul>
+<h2 id="RangeMap"><a href="#RangeMap" class="headerlink" title="RangeMap"></a>RangeMap</h2><p>RangeMap描述了”不相交的、非空的区间”到特定值的映射。和RangeSet不同，RangeMap不会合并相邻的映射，即便相邻的区间映射到相同的值。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">RangeMap&lt;Integer, String&gt; rangeMap = TreeRangeMap.create();</div><div class="line">rangeMap.put(Range.closed(1, 10), &quot;foo&quot;); //&#123;[1,10] =&gt; &quot;foo&quot;&#125;</div><div class="line">rangeMap.put(Range.open(3, 6), &quot;bar&quot;); //&#123;[1,3] =&gt; &quot;foo&quot;, (3,6) =&gt; &quot;bar&quot;, [6,10] =&gt; &quot;foo&quot;&#125;</div><div class="line">rangeMap.put(Range.open(10, 20), &quot;foo&quot;); //&#123;[1,3] =&gt; &quot;foo&quot;, (3,6) =&gt; &quot;bar&quot;, [6,10] =&gt; &quot;foo&quot;, (10,20) =&gt; &quot;foo&quot;&#125;</div><div class="line">rangeMap.remove(Range.closed(5, 11)); //&#123;[1,3] =&gt; &quot;foo&quot;, (3,5) =&gt; &quot;bar&quot;, (11,20) =&gt; &quot;foo&quot;&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>asMapOfRanges()：用Map<range<k>, V&gt;表现RangeMap。这可以用来遍历RangeMap。</range<k></li>
+<li>subRangeMap(Range<k>)：用RangeMap类型返回RangeMap与给定Range的交集视图。这扩展了传统的headMap、subMap和tailMap操作。</k></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">frame</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/22/guava-cllections2/">展开全文 >></a>
         </p>
       
 
