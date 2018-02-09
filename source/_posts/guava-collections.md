@@ -7,7 +7,7 @@ type: "categories"
 ---
 
 ## Multiset
-Guava提供了一个新集合类型 Multiset，它可以多次添加相等的元素。
+Guava提供了一个新集合类型 Multiset，它可以多次添加相等的元素。类似：Map&#60;String, Integer&#62;
 
 举个例子：
 
@@ -58,7 +58,7 @@ guava为我们提供了如下Multiset类型集合：
 
 
 ## Multimap
-我们经常使用Map<K, List<V>>或Map<K, Set<V>>，写业务代码，这个结构非常的笨拙。guava提供了，multimap已便我们用来实现业务。
+我们经常使用Map&#60;K, List&#60;V&#62;&#62;或Map&#60;K, Set&#60;V&#62;&#62;，写业务代码，这个结构非常的笨拙。guava提供了，multimap已便我们用来实现业务。
 
 存储的数据结构类似于：
 
@@ -144,7 +144,7 @@ a -> [1, 2, 4] b -> 3 c -> 5
 		
 ```
 
-我们可以看出区别，HashMultimap<String, Integer> 其实类似于，HashMap<String,Set<Integer>>的数据结构。
+我们可以看出区别，HashMultimap&#60;String, Integer&#62; 其实类似于，HashMap&#60;String,Set&#60;Integer&#62;&#62;的数据结构。
 
 
 guava为我们提供了如下MultiMap类型集合：

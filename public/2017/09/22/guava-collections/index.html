@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://nick-weixx.github.io/github.io">
   <title>guava 新集合类型 | 博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MultisetGuava提供了一个新集合类型 Multiset，它可以多次添加相等的元素。 举个例子： 12345678910111213141516171819202122232425262728   final String[] names = new String[] &amp;#123; &amp;quot;nick&amp;quot;, &amp;quot;davide&amp;quot;, &amp;quot;ken&amp;quot;,">
+  <meta name="description" content="MultisetGuava提供了一个新集合类型 Multiset，它可以多次添加相等的元素。类似：Map&amp;#60;String, Integer&amp;#62; 举个例子： 12345678910111213141516171819202122232425262728   final String[] names = new String[] &amp;#123; &amp;quot;nick&amp;quot;, &amp;quot">
 <meta name="keywords" content="frame">
 <meta property="og:type" content="article">
 <meta property="og:title" content="guava 新集合类型">
 <meta property="og:url" content="https://nick-weixx.github.io/github.io/2017/09/22/guava-collections/index.html">
 <meta property="og:site_name" content="博客">
-<meta property="og:description" content="MultisetGuava提供了一个新集合类型 Multiset，它可以多次添加相等的元素。 举个例子： 12345678910111213141516171819202122232425262728   final String[] names = new String[] &amp;#123; &amp;quot;nick&amp;quot;, &amp;quot;davide&amp;quot;, &amp;quot;ken&amp;quot;,">
-<meta property="og:updated_time" content="2017-09-22T09:59:36.000Z">
+<meta property="og:description" content="MultisetGuava提供了一个新集合类型 Multiset，它可以多次添加相等的元素。类似：Map&amp;#60;String, Integer&amp;#62; 举个例子： 12345678910111213141516171819202122232425262728   final String[] names = new String[] &amp;#123; &amp;quot;nick&amp;quot;, &amp;quot">
+<meta property="og:updated_time" content="2017-11-16T11:02:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="guava 新集合类型">
-<meta name="twitter:description" content="MultisetGuava提供了一个新集合类型 Multiset，它可以多次添加相等的元素。 举个例子： 12345678910111213141516171819202122232425262728   final String[] names = new String[] &amp;#123; &amp;quot;nick&amp;quot;, &amp;quot;davide&amp;quot;, &amp;quot;ken&amp;quot;,">
+<meta name="twitter:description" content="MultisetGuava提供了一个新集合类型 Multiset，它可以多次添加相等的元素。类似：Map&amp;#60;String, Integer&amp;#62; 举个例子： 12345678910111213141516171819202122232425262728   final String[] names = new String[] &amp;#123; &amp;quot;nick&amp;quot;, &amp;quot">
   
     <link rel="alternative" href="./atom.xml" title="博客" type="application/atom+xml">
   
@@ -198,7 +198,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Multiset"><a href="#Multiset" class="headerlink" title="Multiset"></a>Multiset</h2><p>Guava提供了一个新集合类型 Multiset，它可以多次添加相等的元素。</p>
+        <h2 id="Multiset"><a href="#Multiset" class="headerlink" title="Multiset"></a>Multiset</h2><p>Guava提供了一个新集合类型 Multiset，它可以多次添加相等的元素。类似：Map&#60;String, Integer&#62;</p>
 <p>举个例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">   final String[] names = new String[] &#123; &quot;nick&quot;, &quot;davide&quot;, &quot;ken&quot;, &quot;ken&quot;, &quot;nick&quot;, &quot;nick&quot; &#125;;</div><div class="line">      System.out.println(&quot;hashmap:&quot;);</div><div class="line">	Map&lt;String, Integer&gt; hashMap = new HashMap&lt;String, Integer&gt;();</div><div class="line">	for (int i = 0; i &lt; names.length; i++) &#123;</div><div class="line">		String name = names[i];</div><div class="line">		if (hashMap.containsKey(name)) &#123;</div><div class="line">			hashMap.put(name, hashMap.get(name) + 1);</div><div class="line">		&#125; else &#123;</div><div class="line">			hashMap.put(name, 1);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	for (Map.Entry&lt;String, Integer&gt; entry : hashMap.entrySet()) &#123;</div><div class="line">		System.out.println(&quot;name: &quot; + entry.getKey() + &quot; ,count: &quot; + entry.getValue());</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	System.out.println(&quot;\n&quot; + &quot;hashmultiset:&quot;);</div><div class="line">	HashMultiset&lt;String&gt; hashMultiSet = HashMultiset.create();</div><div class="line">	for (int i = 0; i &lt; names.length; i++) &#123;</div><div class="line">		hashMultiSet.add(names[i]);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	System.out.println(hashMultiSet);</div><div class="line">	for (Multiset.Entry&lt;String&gt; name : hashMultiSet.entrySet()) &#123;</div><div class="line">		System.out.println(&quot;name: &quot; + name.getElement() + &quot; ,count: &quot; + hashMultiSet.count(name.getElement()));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>HashMap 在实现key值出现次数的统计时，必须拿到原来的值，并重新赋值会原来的集合。还需要判断当前key是否贼map中。</p>
@@ -252,12 +252,12 @@
 </tr>
 </tbody>
 </table>
-<h2 id="Multimap"><a href="#Multimap" class="headerlink" title="Multimap"></a>Multimap</h2><p>我们经常使用Map<k, list<v="">&gt;或Map<k, set<v="">&gt;，写业务代码，这个结构非常的笨拙。guava提供了，multimap已便我们用来实现业务。</k,></k,></p>
+<h2 id="Multimap"><a href="#Multimap" class="headerlink" title="Multimap"></a>Multimap</h2><p>我们经常使用Map&#60;K, List&#60;V&#62;&#62;或Map&#60;K, Set&#60;V&#62;&#62;，写业务代码，这个结构非常的笨拙。guava提供了，multimap已便我们用来实现业务。</p>
 <p>存储的数据结构类似于：</p>
 <p>a -&gt; [1, 2, 4] b -&gt; 3 c -&gt; 5</p>
 <p>举个例子：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line">     System.out.println(&quot;hashMap:&quot;);</div><div class="line">Map&lt;String, Integer&gt; hashMap = new HashMap&lt;String, Integer&gt;();</div><div class="line">hashMap.put(&quot;nick&quot;, 23);</div><div class="line">hashMap.put(&quot;nick&quot;, 22);</div><div class="line">hashMap.put(&quot;ken&quot;, 56);</div><div class="line">hashMap.put(&quot;ken&quot;, 58);</div><div class="line">hashMap.put(&quot;david&quot;, 78);</div><div class="line">hashMap.put(&quot;&quot;, 78);</div><div class="line">hashMap.put(null, 78);</div><div class="line">for (String demo : hashMap.keySet()) &#123;</div><div class="line">	System.out.println(demo + &quot;\t&quot; + hashMap.get(demo));</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">//k-set结构</div><div class="line">System.out.println(&quot;\n&quot; + &quot;hashMultimap:&quot;);</div><div class="line">HashMultimap&lt;String, Integer&gt; hashMultimap = HashMultimap.create();</div><div class="line">hashMultimap.put(&quot;nick&quot;, 23);</div><div class="line">hashMultimap.put(&quot;nick&quot;, 22);</div><div class="line">hashMultimap.put(&quot;ken&quot;, 56);</div><div class="line">hashMultimap.put(&quot;ken&quot;, 58);</div><div class="line">hashMultimap.put(&quot;david&quot;, 78);</div><div class="line">hashMultimap.put(&quot;&quot;, 78);</div><div class="line">hashMultimap.put(null, 78);</div><div class="line">for (String demo : hashMultimap.keySet()) &#123;</div><div class="line">	System.out.println(demo + &quot;\t&quot; + hashMultimap.get(demo));</div><div class="line">&#125;</div><div class="line"></div><div class="line">//k-list 结构</div><div class="line">System.out.println(&quot;\n&quot; + &quot;arrayListMultiMap:&quot;);</div><div class="line">ArrayListMultimap&lt;String, Integer&gt; arrayListMultiMap =ArrayListMultimap.create();</div><div class="line">arrayListMultiMap.put(&quot;nick&quot;, 23);</div><div class="line">arrayListMultiMap.put(&quot;nick&quot;, 22);</div><div class="line">arrayListMultiMap.put(&quot;ken&quot;, 56);</div><div class="line">arrayListMultiMap.put(&quot;ken&quot;, 58);</div><div class="line">arrayListMultiMap.put(&quot;david&quot;, 78);</div><div class="line">arrayListMultiMap.put(&quot;&quot;, 78);</div><div class="line">arrayListMultiMap.put(null, 78);</div><div class="line">for (String demo : arrayListMultiMap.keySet()) &#123;</div><div class="line">	System.out.println(demo + &quot;\t&quot; + arrayListMultiMap.get(demo));</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">  System.out.println(&quot;\n&quot; + &quot;TreeMap:&quot;);</div><div class="line">TreeMap&lt;String, Integer&gt; treeMap = new TreeMap&lt;String, Integer&gt;();</div><div class="line">treeMap.put(&quot;nick&quot;, 23);</div><div class="line">treeMap.put(&quot;nick&quot;, 22);</div><div class="line">treeMap.put(&quot;david&quot;, 56);</div><div class="line">treeMap.put(&quot;david&quot;, 58);</div><div class="line">treeMap.put(&quot;ken&quot;, 78);</div><div class="line">treeMap.put(&quot;aaa&quot;, 23);</div><div class="line">treeMap.put(&quot;leo&quot;, 34);</div><div class="line">treeMap.put(&quot;luna&quot;, 87);</div><div class="line">treeMap.put(&quot;&quot;, 78);</div><div class="line">// treeMap.put(null, 78); //key不能为null</div><div class="line">for (String demo : treeMap.keySet()) &#123;</div><div class="line">	System.out.println(demo + &quot;\t&quot; + treeMap.get(demo));</div><div class="line">&#125;</div><div class="line"></div><div class="line">System.out.println(&quot;\n&quot; + &quot;TreeMultimap:&quot;);</div><div class="line">TreeMultimap&lt;String, Integer&gt; treeMultimap = TreeMultimap.create();</div><div class="line">treeMultimap.put(&quot;nick&quot;, 23);</div><div class="line">treeMultimap.put(&quot;nick&quot;, 22);</div><div class="line">treeMultimap.put(&quot;david&quot;, 56);</div><div class="line">treeMultimap.put(&quot;david&quot;, 58);</div><div class="line">treeMultimap.put(&quot;ken&quot;, 78);</div><div class="line">treeMultimap.put(&quot;aaa&quot;, 23);</div><div class="line">treeMultimap.put(&quot;leo&quot;, 34);</div><div class="line">treeMultimap.put(&quot;luna&quot;, 87);</div><div class="line">treeMultimap.put(&quot;&quot;, 78);</div><div class="line">// treeMultimap.put(null, 78); //key不能为null</div><div class="line">for (String demo : treeMultimap.keySet()) &#123;</div><div class="line">	System.out.println(demo + &quot;\t&quot; + treeMultimap.get(demo));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们可以看出区别，HashMultimap<string, integer=""> 其实类似于，HashMap<string,set<integer>&gt;的数据结构。</string,set<integer></string,></p>
+<p>我们可以看出区别，HashMultimap&#60;String, Integer&#62; 其实类似于，HashMap&#60;String,Set&#60;Integer&#62;&#62;的数据结构。</p>
 <p>guava为我们提供了如下MultiMap类型集合：</p>
 <table>
 <thead>
@@ -433,18 +433,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/08/30/guava-cache/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/09/22/guava-cllections2/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          guava LoadingCache 缓存
+          guava 新集合类型2
         
       </div>
     </a>
   
   
-    <a href="/2017/09/22/guava-cllections2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">guava 新集合类型2</div>
+    <a href="/2017/10/10/redis-cluster-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redis cluster 集群搭建</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -470,7 +470,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 nick
+    		&copy; 2018 nick
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -550,6 +550,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">frame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">intforce</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -652,7 +656,7 @@
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">一个小码农</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">他每做一件小事的时候，都好像抓住一根救命稻草，到最后你才发现，他抱住的已经是一棵参天大树了。--《士兵突击》</div>
   	  	
     	</section>
     

@@ -7,7 +7,7 @@ type: "categories"
 ---
 
 ## Table
-Guava为此提供了新集合类型Table，它有两个支持所有类型的键：”行”和”列”。替代了类似Map<String, Map<String,Integer>>的实现，这种方式很丑陋,使用不友好的数据结构。
+Guava为此提供了新集合类型Table，它有两个支持所有类型的键：”行”和”列”。替代了类似Map&#60;String, Map&#60;String,Integer&#62;&#62;的实现，这种方式很丑陋,使用不友好的数据结构。
 
 举个例子：
 
@@ -78,19 +78,19 @@ Guava为此提供了新集合类型Table，它有两个支持所有类型的键�
 		
 ```
 
--  table.row("nick")： 用Map\<C, V>返回给定”行”的所有列，对这个map进行的写操作也将写入Table中。
--  table.rowKeySet()：返回所有行键，Set\<R> 格式
+-  table.row("nick")： 用Map&#60;C, V&#62;返回给定”行”的所有列，对这个map进行的写操作也将写入Table中。
+-  table.rowKeySet()：返回所有行键，Set&#60;R&#62; 格式
  
-- cellSet()：用元素类型为Table.Cell\<R, C, V>的Set表现Table\<R, C, V>。Cell类似于Map.Entry，但它是用行和列两个键区分的
+- cellSet()：用元素类型为Table.Cell&#60;R, C, V&#62;的Set表现Table&#60;R, C, V&#62;。Cell类似于Map.Entry，但它是用行和列两个键区分的
 
 guava为我们提供了如下Multiset类型集合：
 
 | 实现(TABLE)           | 是否重复值插入           | 是否支持null  | 是否线程安全 | 含义         |
 | ------------------|:-----------------------:| -----------:|------------| ---------    |
-| HashBasedTable       | Y            | Y           |N           |HashMap<R, HashMap<C, V>>实现      |
-| TreeBasedTable           | Y            | Y           |N          |TreeMap<R, TreeMap<C,V>>实现   |
+| HashBasedTable       | Y            | Y           |N           |HashMap&#60;R, HashMap&#60;C, V&#62;&#62;实现      |
+| TreeBasedTable           | Y            | Y           |N          |TreeMap&#60;R, TreeMap&#60;C,V&#62;&#62;实现   |
 | ArrayTable     | Y      | Y           |N          |二维数组实现，与其他TABLE工作原理不同 |
-| ImmutableTable     | N      | N          |Y          |只读table实现,ImmutableMap<R, ImmutableMap<C, V>> |
+| ImmutableTable     | N      | N          |Y          |只读table实现,ImmutableMap&#60;R, ImmutableMap&#60;C, V&#62;&#62; |
 
 
 
@@ -125,9 +125,9 @@ RangeSet描述了一组不相连的、非空的区间。当把一个区间添加
 
 
 -  complement()：返回RangeSet的补集视图。complement也是RangeSet类型,包含了不相连的、非空的区间。
--  subRangeSet(Range<C>)：返回RangeSet与给定Range的交集视图。这扩展了传统排序集合中的headSet、subSet和tailSet操作。
--  asRanges()：用Set<Range<C>>表现RangeSet，这样可以遍历其中的Range。
--  asSet(DiscreteDomain<C>)（仅ImmutableRangeSet支持）：用ImmutableSortedSet<C>表现RangeSet，以区间中所有元素的形式而不是区间本身的形式查看。（这个操作不支持DiscreteDomain 和RangeSet都没有上边界，或都没有下边界的情况）
+-  subRangeSet(Range&#60;C&#62;)：返回RangeSet与给定Range的交集视图。这扩展了传统排序集合中的headSet、subSet和tailSet操作。
+-  asRanges()：用Set&#60;Range&#60;C&#62;&#62;表现RangeSet，这样可以遍历其中的Range。
+-  asSet(DiscreteDomain&#60;C&#62;)（仅ImmutableRangeSet支持）：用ImmutableSortedSet&#60;C&#62;表现RangeSet，以区间中所有元素的形式而不是区间本身的形式查看。（这个操作不支持DiscreteDomain 和RangeSet都没有上边界，或都没有下边界的情况）
 
 
 ## RangeMap
@@ -143,5 +143,5 @@ RangeMap描述了”不相交的、非空的区间”到特定值的映射。和
 
 ```
 
-- asMapOfRanges()：用Map<Range<K>, V>表现RangeMap。这可以用来遍历RangeMap。
-- subRangeMap(Range<K>)：用RangeMap类型返回RangeMap与给定Range的交集视图。这扩展了传统的headMap、subMap和tailMap操作。
+- asMapOfRanges()：用Map&#60;Range&#60;K&#62;, V&#62;表现RangeMap。这可以用来遍历RangeMap。
+- subRangeMap(Range&#60;K&#62;)：用RangeMap类型返回RangeMap与给定Range的交集视图。这扩展了传统的headMap、subMap和tailMap操作。
